@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komarov Sergey — Software Engineer</title>
+    <meta name="description" content="Komarov Sergey — high school student, aspiring software engineer, and US college applicant. Building human-centered tools." />
+
+    <!-- Open Graph / Twitter — clean link preview when this page is shared with admissions officers, recruiters, etc. -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Komarov Sergey — Software Engineer">
+    <meta property="og:description" content="High school student building human-centered software: bilingual bots, live dashboards, and tools that solve real problems. Applying to US universities for Computer Science.">
+    <meta property="og:site_name" content="Komarov Sergey">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Komarov Sergey — Software Engineer">
+    <meta name="twitter:description" content="High school student building human-centered software. US CS applicant.">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧑‍💻%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-0: #07070c;
+            --bg-1: #0c0c16;
+            --surface: rgba(17, 18, 30, 0.72);
+            --surface-2: rgba(255, 255, 255, 0.025);
+            --surface-hover: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.07);
+            --border-strong: rgba(255, 255, 255, 0.12);
+            --text-1: #f5f5fa;
+            --text-2: #a6a8c4;
+            --text-3: #6b6d88;
+            --text-4: #4a4c63;
+            --accent: #7c6cff;
+            --accent-2: #2dd4bf;
+            --accent-3: #f0abfc;
+            --accent-warm: #fbbf24;
+            --shadow-soft: 0 1px 0 rgba(255,255,255,0.04) inset, 0 20px 60px -20px rgba(0,0,0,0.8);
+            --radius: 22px;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        /* NEW: real keyboard-accessibility, not just decorative — visible
+           focus ring for anyone tabbing through with a keyboard/screen
+           reader, plus a skip-link past the animated hero. */
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible, input:focus-visible {
+            outline: 2px solid var(--accent-2);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+        .skip-link {
+            position: fixed;
+            top: -60px;
+            left: 12px;
+            z-index: 999;
+            background: var(--bg-1);
+            color: var(--text-1);
+            border: 1px solid var(--accent-2);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            text-decoration: none;
+            transition: top 0.25s var(--ease);
+        }
+        .skip-link:focus { top: 12px; }
+
+        body {
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 20px 80px;
+            background: var(--bg-0);
+            color: var(--text-1);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-layer { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; will-change: transform; }
+        .orb-1 { width: 520px; height: 520px; background: radial-gradient(circle, rgba(124,108,255,0.55), transparent 65%); top: -120px; left: -120px; animation: drift1 26s ease-in-out infinite; }
+        .orb-2 { width: 460px; height: 460px; background: radial-gradient(circle, rgba(45,212,191,0.4), transparent 65%); bottom: -140px; right: -100px; animation: drift2 30s ease-in-out infinite; }
+        .orb-3 { width: 380px; height: 380px; background: radial-gradient(circle, rgba(240,171,252,0.28), transparent 65%); top: 40%; left: 55%; animation: drift3 34s ease-in-out infinite; }
+        @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(120px,80px) scale(1.12)} }
+        @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-90px,-70px) scale(1.1)} }
+        @keyframes drift3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-40%,-60%) scale(1.18)} }
+
+        .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; z-index: 100;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px rgba(124,108,255,0.6); }
+
+        .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
+        .cursor-dot { width: 6px; height: 6px; background: #fff; transform: translate(-50%,-50%); transition: transform 0.15s var(--ease), width .2s, height .2s; }
+        .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.5); transform: translate(-50%,-50%); transition: transform 0.25s var(--ease), width .25s, height .25s, border-color .25s; }
+        body.hovering .cursor-ring { width: 56px; height: 56px; border-color: var(--accent-2); }
+        body.hovering .cursor-dot { width: 0; height: 0; }
+        @media (hover: none), (max-width: 768px) { .cursor-dot, .cursor-ring { display: none; } }
+
+        /* comet trail canvas — sits above content, below the dot/ring */
+        #cometCanvas { position: fixed; inset: 0; z-index: 9998; pointer-events: none; }
+        @media (hover: none), (max-width: 768px) { #cometCanvas { display: none; } }
+
+        .card {
+            max-width: 940px; width: 100%;
+            background: var(--surface);
+            backdrop-filter: blur(28px) saturate(140%);
+            -webkit-backdrop-filter: blur(28px) saturate(140%);
+            border-radius: var(--radius);
+            padding: 0;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            animation: cardIn 1.1s var(--ease-out) both;
+        }
+        @keyframes cardIn { from { opacity: 0; transform: translateY(28px) scale(0.985); } to { opacity: 1; transform: none; } }
+
+        .card::after { content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); }
+
+        .card-inner { padding: 40px 44px 36px; position: relative; z-index: 5; }
+
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 14px; }
+        .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 13px; color: var(--text-3); letter-spacing: 0.02em; }
+        .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 rgba(45,212,191,0.6); animation: pulse 2.4s infinite; }
+        @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(45,212,191,0.55)} 70%{box-shadow:0 0 0 10px rgba(45,212,191,0)} 100%{box-shadow:0 0 0 0 rgba(45,212,191,0)} }
+
+        .nav { display: flex; gap: 4px; background: var(--surface-2); border: 1px solid var(--border); padding: 4px; border-radius: 14px; position: relative; }
+        .nav a {
+            color: var(--text-2); text-decoration: none; font-size: 13px; font-weight: 500;
+            padding: 8px 16px; border-radius: 10px; transition: color 0.3s var(--ease); position: relative; z-index: 2;
+            font-family: var(--font-display); letter-spacing: -0.01em;
+        }
+        .nav a:hover { color: var(--text-1); }
+        .nav a.active { color: var(--text-1); }
+        .nav-indicator { position: absolute; top: 4px; bottom: 4px; border-radius: 10px;
+            background: linear-gradient(180deg, rgba(124,108,255,0.28), rgba(124,108,255,0.14));
+            border: 1px solid rgba(124,108,255,0.3); z-index: 1;
+            transition: all 0.5s var(--ease); box-shadow: 0 4px 16px rgba(124,108,255,0.25); }
+
+        .page { display: none; animation: pageIn 0.7s var(--ease-out) both; }
+        .page.active { display: block; }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+        .stagger > * { animation: pageIn 0.7s var(--ease-out) both; }
+        .stagger > *:nth-child(1){animation-delay:.05s}
+        .stagger > *:nth-child(2){animation-delay:.12s}
+        .stagger > *:nth-child(3){animation-delay:.19s}
+        .stagger > *:nth-child(4){animation-delay:.26s}
+        .stagger > *:nth-child(5){animation-delay:.33s}
+        .stagger > *:nth-child(6){animation-delay:.40s}
+
+        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 4px 0 4px; }
+        .hero .kicker { font-family: var(--font-mono); font-size: 12px; color: var(--accent-2); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(40px, 6vw, 60px); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; color: var(--text-1); }
+        .hero h1 .grad { background: linear-gradient(110deg, var(--text-1) 20%, var(--accent) 55%, var(--accent-3) 95%);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero .role { font-size: 18px; color: var(--text-2); margin-top: 12px; font-weight: 450; max-width: 540px; }
+        .hero .loc { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 13px; color: var(--text-3);
+            padding: 6px 16px; border: 1px solid var(--border); border-radius: 100px; background: var(--surface-2); }
+        .hero .loc i { color: var(--accent); }
+
+        .avatar-3d { width: 120px; height: 120px; margin-bottom: 18px; }
+        .avatar-3d canvas { width: 100% !important; height: 100% !important; display: block; }
+        .hero-emoji { font-size: 64px; line-height: 1; margin-bottom: 16px; filter: drop-shadow(0 12px 30px rgba(124,108,255,0.3)); animation: float 5s ease-in-out infinite; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+        .sec-head { display: flex; align-items: baseline; gap: 12px; margin: 32px 0 14px; flex-wrap: wrap; }
+        .sec-head h2 { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-1); display: flex; align-items: center; gap: 10px; }
+        .sec-head .num { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
+        .sec-head .tag { font-family: var(--font-mono); font-size: 10.5px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 3px 10px; border: 1px solid rgba(124,108,255,0.2); border-radius: 100px; background: rgba(124,108,255,0.08); }
+        .sec-line { height: 1px; background: linear-gradient(90deg, var(--border-strong), transparent); margin-bottom: 18px; }
+
+        .about { font-size: 15.5px; line-height: 1.75; color: var(--text-2); max-width: 640px; }
+        .about strong { color: var(--text-1); font-weight: 600; }
+        .about .accent-word { color: var(--accent-2); font-weight: 500; }
+
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+        .stat { padding: 16px 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; text-align: center; transition: border-color 0.3s, transform 0.3s; }
+        .stat:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+        .stat .n { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; }
+        .stat .l { font-size: 11.5px; color: var(--text-3); margin-top: 4px; }
+
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 4px; }
+        .link-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px 14px; border-radius: 16px;
+            text-decoration: none; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-2);
+            transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+        .link-btn i { font-size: 20px; transition: transform 0.4s var(--ease); }
+        .link-btn span { font-size: 13px; font-weight: 500; }
+        .link-btn::before { content:''; position:absolute; inset:0; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(124,108,255,0.18), transparent 60%); opacity:0; transition:opacity .4s; pointer-events: none; }
+        .link-btn:hover { transform: translateY(-4px); border-color: rgba(124,108,255,0.4); color: var(--text-1); box-shadow: 0 16px 40px -16px rgba(124,108,255,0.4); }
+        .link-btn:hover::before { opacity: 1; }
+        .link-btn:hover i { transform: scale(1.12); }
+        .link-btn.tg i { color: #74b9ff; }
+        .link-btn.dc i { color: #8c9eff; }
+        .link-btn.gh i { color: var(--text-1); }
+        .link-btn.em i { color: var(--accent-warm); }
+
+        .proj { position: relative; background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 24px 24px 20px; margin-bottom: 14px;
+            transition: all 0.45s var(--ease); overflow: hidden; }
+        .proj::before { content:''; position:absolute; inset:0; border-radius:18px; padding:1px; background: linear-gradient(130deg, rgba(124,108,255,0.5), transparent 40%, transparent 60%, rgba(45,212,191,0.4));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity:0; transition: opacity .5s var(--ease); pointer-events: none; }
+        .proj:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -20px rgba(0,0,0,0.6); }
+        .proj:hover::before { opacity: 1; }
+        .proj-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+        .proj-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-1); letter-spacing: -0.01em; display: flex; align-items: center; gap: 4px; }
+        .proj-icon { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-right: 10px; flex-shrink: 0; }
+        .proj-icon.c { background: rgba(0,184,148,0.12); border: 1px solid rgba(0,184,148,0.2); }
+        .proj-icon.u { background: rgba(9,132,255,0.12); border: 1px solid rgba(9,132,255,0.2); }
+        .proj-badge { font-family: var(--font-mono); font-size: 10px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase;
+            padding: 3px 10px; border: 1px solid rgba(124,108,255,0.2); border-radius: 100px; background: rgba(124,108,255,0.08); }
+        .proj-desc { color: var(--text-2); font-size: 14px; line-height: 1.7; margin: 8px 0 14px; }
+        .proj-desc strong { color: var(--text-1); font-weight: 500; }
+        .tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        .tech span { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-3); padding: 3px 10px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255,255,255,0.02); }
+        .proj-links { display: flex; gap: 8px; flex-wrap: wrap; }
+        .chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; font-size: 12.5px; font-weight: 500; text-decoration: none;
+            border: 1px solid var(--border); background: var(--surface-2); color: var(--text-2); transition: all 0.3s var(--ease); }
+        .chip:hover { transform: translateY(-2px); color: var(--text-1); }
+        .chip.bot { color: #55efc4; border-color: rgba(0,184,148,0.2); background: rgba(0,184,148,0.06); }
+        .chip.bot:hover { background: rgba(0,184,148,0.14); }
+        .chip.dash { color: var(--accent-warm); border-color: rgba(251,191,36,0.2); background: rgba(251,191,36,0.06); }
+        .chip.dash:hover { background: rgba(251,191,36,0.14); }
+        .chip.ch { color: #74b9ff; border-color: rgba(9,132,255,0.2); background: rgba(9,132,255,0.06); }
+        .chip.ch:hover { background: rgba(9,132,255,0.14); }
+        .chip.gh { color: var(--text-1); }
+        .chip.gh:hover { background: rgba(255,255,255,0.06); }
+
+        .note-box { margin-top: 20px; padding: 18px 20px; background: linear-gradient(135deg, rgba(251,191,36,0.06), rgba(124,108,255,0.05));
+            border: 1px solid rgba(251,191,36,0.12); border-radius: 16px; display: flex; gap: 14px; align-items: flex-start; }
+        .note-box .ni { font-size: 20px; flex-shrink: 0; }
+        .note-box .nt { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+        .note-box .nt b { color: var(--accent-warm); }
+
+        .award { display: flex; gap: 16px; padding: 20px 22px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px;
+            transition: all 0.4s var(--ease); position: relative; }
+        .award:hover { border-color: var(--border-strong); transform: translateX(4px); }
+        .award .medal { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(124,108,255,0.1)); border: 1px solid rgba(251,191,36,0.2); }
+        .award h3 { font-family: var(--font-display); font-size: 15.5px; font-weight: 600; color: var(--text-1); margin-bottom: 4px; letter-spacing: -0.01em; }
+        .award p { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+        .award .date { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-3); margin-top: 6px; display: inline-block; }
+
+        .drive-cta { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 20px; border-radius: 16px; margin-top: 20px;
+            background: linear-gradient(135deg, rgba(0,184,148,0.12), rgba(45,212,191,0.08)); border: 1px solid rgba(0,184,148,0.2);
+            color: #55efc4; font-size: 15px; font-weight: 600; font-family: var(--font-display); letter-spacing: -0.01em; text-decoration: none; transition: all 0.4s var(--ease); }
+        .drive-cta:hover { transform: translateY(-3px); box-shadow: 0 18px 44px -16px rgba(0,184,148,0.4); border-color: rgba(0,184,148,0.4); }
+        .drive-cta i { font-size: 18px; }
+        .tiny-note { text-align: center; color: var(--text-4); font-size: 12.5px; margin-top: 12px; font-family: var(--font-mono); }
+
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+        .footer .left { font-size: 12.5px; color: var(--text-3); }
+        .footer .left a { color: var(--text-2); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s; }
+        .footer .left a:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+        .footer .badge { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.04em;
+            padding: 5px 14px; border: 1px solid rgba(124,108,255,0.2); border-radius: 100px; background: rgba(124,108,255,0.06); }
+
+        #space-container { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.4s var(--ease); }
+        #space-container.active { opacity: 0.6; }
+        #space-container canvas { width: 100% !important; height: 100% !important; display: block; }
+
+        /* ===== BLACK HOLE AVATAR (REDESIGNED) ===== */
+        #blackhole-avatar {
+            position: relative;
+            width: 168px;
+            height: 168px;
+            margin-bottom: 18px;
+            cursor: grab;
+            touch-action: none;
+        }
+        #blackhole-avatar.dragging { cursor: grabbing; }
+        #blackhole-avatar canvas { width: 100% !important; height: 100% !important; display: block; }
+        .bh-ring-hint {
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            letter-spacing: 0.08em;
+            color: var(--text-4);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.5s var(--ease);
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+        #blackhole-avatar:hover .bh-ring-hint,
+        #blackhole-avatar.pulled .bh-ring-hint { opacity: 1; }
+        .bh-label {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            color: var(--accent-2);
+            background: rgba(7,7,12,0.6);
+            border: 1px solid rgba(45,212,191,0.25);
+            padding: 2px 8px;
+            border-radius: 100px;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        #blackhole-avatar:hover .bh-label { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+        #blackhole-avatar canvas:active { }
+
+        .status {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border);
+            padding: 8px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: var(--text-3);
+        }
+
+        .status .left { display: flex; gap: 20px; align-items: center; }
+        .status .mode { color: var(--accent-2); }
+        .status .nn-clock { position: relative; color: var(--text-3); cursor: default; padding-left: 20px; border-left: 1px solid var(--border); }
+        .status .nn-clock::before { content: '🇷🇺'; margin-right: 6px; font-size: 10px; }
+        .status .nn-clock .nn-tip {
+            position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+            font-family: var(--font-mono); font-size: 10px; color: var(--text-2);
+            background: var(--bg-1); border: 1px solid var(--border); padding: 5px 9px; border-radius: 8px;
+            white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease); z-index: 30;
+        }
+        .status .nn-clock:hover .nn-tip { opacity: 1; }
+        .status .keys { display: flex; gap: 8px; }
+        .status kbd {
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 10.5px;
+            color: var(--text-3);
+        }
+
+        dialog {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        dialog[open] {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 18vh;
+        }
+
+        dialog::backdrop {
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .palette-box {
+            width: 100%;
+            max-width: 520px;
+            background: var(--bg-1);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            animation: drop 0.3s ease-out;
+        }
+
+        @keyframes drop {
+            from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .palette-box input {
+            width: 100%;
+            padding: 18px 22px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-1);
+            font-family: var(--font-body);
+            font-size: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .palette-box input::placeholder { color: var(--text-3); }
+
+        .palette-box ul {
+            list-style: none;
+            max-height: 320px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+
+        .palette-box li {
+            padding: 10px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-2);
+            font-size: 13.5px;
+            transition: background 0.2s;
+        }
+
+        .palette-box li:hover,
+        .palette-box li.focused {
+            background: var(--surface-2);
+            color: var(--text-1);
+        }
+
+        .palette-box li span { display: flex; align-items: center; gap: 10px; }
+        .palette-box li i { color: var(--accent); width: 18px; text-align: center; }
+        .palette-box li .key {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-3);
+        }
+
+        .toast-wrap {
+            position: fixed;
+            bottom: 56px;
+            right: 24px;
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .toast {
+            padding: 12px 18px;
+            border-radius: 8px;
+            background: var(--bg-1);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            font-size: 13px;
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show { transform: translateX(0); }
+        .toast i { color: var(--accent-2); }
+
+        #toTop {
+            position: fixed;
+            bottom: 56px;
+            right: 24px;
+            z-index: 90;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+
+        #toTop.on {
+            opacity: 1;
+            transform: none;
+            pointer-events: auto;
+        }
+
+        #toTop:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FLOATING TERMINAL (В ЛЕВОМ НИЖНЕМ УГЛУ) ===== */
+        .terminal-float {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            z-index: 150;
+            width: 380px;
+            max-width: calc(100vw - 40px);
+            background: #0a0a0f;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateX(-120%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .terminal-float.open {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .terminal-float .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
+            user-select: none;
+            cursor: move;
+        }
+
+        .terminal-float .terminal-header .drag-handle {
+            flex: 1;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .terminal-float .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-float .terminal-dot.red { background: #ff5f57; }
+        .terminal-float .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-float .terminal-dot.green { background: #28c840; }
+
+        .terminal-float .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-3);
+            margin-left: 4px;
+        }
+
+        .terminal-float .terminal-close {
+            background: none;
+            border: none;
+            color: var(--text-3);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0 4px;
+            transition: color 0.3s;
+        }
+
+        .terminal-float .terminal-close:hover {
+            color: var(--text-1);
+        }
+
+        .terminal-float .terminal-body {
+            padding: 12px 16px;
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: var(--text-2);
+            min-height: 220px;
+            max-height: 320px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        .terminal-float .terminal-body .prompt {
+            color: var(--accent-2);
+        }
+
+        .terminal-float .terminal-body .input-line {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .terminal-float .terminal-body .input-line input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-1);
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            flex: 1;
+            min-width: 60px;
+            caret-color: var(--accent-2);
+        }
+
+        .terminal-float .terminal-body .input-line input::selection {
+            background: rgba(124,108,255,0.3);
+        }
+
+        .terminal-float .terminal-body .output {
+            color: var(--text-2);
+            margin: 3px 0 6px 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .terminal-float .terminal-body .output .highlight {
+            color: var(--accent-warm);
+        }
+        .terminal-float .terminal-body .output .accent {
+            color: var(--accent-2);
+        }
+        .terminal-float .terminal-body .output .error {
+            color: #ff6b6b;
+        }
+        .terminal-float .terminal-body .output .dim {
+            color: var(--text-3);
+        }
+        .terminal-float .terminal-body .output .cmd {
+            color: var(--accent);
+        }
+        .terminal-float .terminal-body .output .project-item {
+            display: block;
+            padding: 1px 0;
+        }
+        .terminal-float .terminal-body .output .project-item .name {
+            color: var(--accent-warm);
+        }
+        .terminal-float .terminal-body .output .project-item .desc {
+            color: var(--text-3);
+            font-size: 11px;
+        }
+
+        /* ===== КНОПКА ОТКРЫТИЯ ТЕРМИНАЛА ===== */
+        .terminal-toggle-btn {
+            position: fixed;
+            bottom: 28px;
+            left: 20px;
+            z-index: 160;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            color: var(--text-2);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            user-select: none;
+        }
+
+        .terminal-toggle-btn:hover {
+            border-color: var(--accent-2);
+            color: var(--text-1);
+            background: rgba(10, 10, 15, 0.95);
+            box-shadow: 0 4px 30px rgba(45, 212, 191, 0.15);
+        }
+
+        .terminal-toggle-btn i {
+            font-size: 14px;
+            color: var(--accent-2);
+        }
+
+        .terminal-toggle-btn .badge {
+            background: var(--accent-2);
+            color: var(--bg-0);
+            font-size: 9px;
+            font-weight: 700;
+            padding: 1px 8px;
+            border-radius: 40px;
+            margin-left: 2px;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 640px) {
+            .terminal-float {
+                width: 100%;
+                max-width: calc(100vw - 30px);
+                bottom: 76px;
+                left: 15px;
+            }
+            .terminal-float .terminal-body {
+                font-size: 11px;
+                min-height: 160px;
+                max-height: 220px;
+                padding: 10px 12px;
+            }
+            .terminal-float .terminal-body .input-line input {
+                font-size: 11px;
+            }
+            .terminal-toggle-btn {
+                left: 15px;
+                bottom: 20px;
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+            .terminal-toggle-btn span {
+                display: none;
+            }
+            .terminal-toggle-btn .badge {
+                display: none;
+            }
+            .card-inner { padding: 24px 18px; }
+            .nav-wrap { justify-content: center; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .stats { grid-template-columns: 1fr 1fr; }
+            .footer { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 32px; }
+            body { padding: 12px 10px 70px; }
+            .nav a { font-size: 12px; padding: 6px 12px; }
+            .brand { font-size: 11px; }
+            .sec-head h2 { font-size: 18px; }
+        }
+
+        /* ===== NEW: QUICK-ACTIONS DOCK (top-right, next to nav) ===== */
+        .quick-dock {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .quick-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            font-size: 13px;
+            position: relative;
+        }
+        .quick-btn:hover {
+            color: var(--text-1);
+            border-color: rgba(124,108,255,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -12px rgba(124,108,255,0.5);
+        }
+        .quick-btn .qb-tip {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-2);
+            background: var(--bg-1);
+            border: 1px solid var(--border);
+            padding: 5px 9px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(-4px);
+            pointer-events: none;
+            transition: all 0.25s var(--ease);
+            z-index: 30;
+        }
+        .quick-btn:hover .qb-tip { opacity: 1; transform: none; }
+        .quick-btn.active { color: var(--accent-2); border-color: rgba(45,212,191,0.35); background: rgba(45,212,191,0.08); }
+
+        /* ===== NEW: supernova flash overlay (konami easter egg) ===== */
+        #supernova-flash {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.95), rgba(124,108,255,0.4) 40%, transparent 72%);
+            opacity: 0;
+        }
+        #supernova-flash.fire {
+            animation: supernovaFlash 1.1s ease-out;
+        }
+        @keyframes supernovaFlash {
+            0% { opacity: 0; }
+            8% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#mainCard" class="skip-link">Skip to main content</a>
+    <div class="bg-layer">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="grain"></div>
+    <canvas id="cometCanvas"></canvas>
+    <div class="progress" id="progress"></div>
+    <div class="cursor-dot" id="cDot"></div>
+    <div class="cursor-ring" id="cRing"></div>
+    <div id="supernova-flash"></div>
+
+    <main class="card" id="mainCard">
+        <div id="space-container"></div>
+        <div class="card-inner">
+
+            <div class="nav-wrap">
+                <div class="brand"><span class="dot"></span> KS · Portfolio '26</div>
+                <nav class="nav" id="nav">
+                    <span class="nav-indicator" id="navInd"></span>
+                    <a href="#" onclick="showPage('home');return false;" data-page="home" class="active">Home</a>
+                    <a href="#" onclick="showPage('projects');return false;" data-page="projects">Projects</a>
+                    <a href="#" onclick="showPage('achievements');return false;" data-page="achievements">Awards</a>
+                </nav>
+                <div class="quick-dock">
+                    <button class="quick-btn" id="resumeBtn" data-hover aria-label="Download one-page résumé PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span class="qb-tip">Download résumé (PDF)</span>
+                    </button>
+                    <button class="quick-btn" id="copyCardBtn" data-hover aria-label="Copy contact card to clipboard">
+                        <i class="fa-solid fa-id-card"></i>
+                        <span class="qb-tip">Copy contact card</span>
+                    </button>
+                    <button class="quick-btn" id="cometToggleBtn" data-hover aria-label="Toggle cursor trail effect">
+                        <i class="fa-solid fa-meteor"></i>
+                        <span class="qb-tip">Toggle cursor trail</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- HOME -->
+            <section id="page-home" class="page active stagger">
+                <div class="hero">
+                    <span class="hero-emoji">🧑‍💻</span>
+                    <span class="kicker">Software Engineer · Builder</span>
+                    <h1><span class="grad">Komarov Sergey</span></h1>
+                    <p class="role">High school student crafting human-centered tools in software, AI &amp; product design.</p>
+                    <span class="loc"><i class="fa-solid fa-location-dot"></i> Nizhny Novgorod, Russia · Building things that help people</span>
+                </div>
+
+                <div class="sec-head">
+                    <span class="num">01</span>
+                    <h2>About</h2>
+                    <span class="tag">US College Applicant</span>
+                </div>
+                <div class="sec-line"></div>
+                <p class="about">
+                    I'm a high school student from Russia with a deep passion for <strong>software engineering, AI, and product design</strong>.
+                    I build tools that solve real human problems — from <span class="accent-word">mental-health bots</span> to interactive experiences.
+                    <br><br>
+                    Currently applying to <strong>US universities for Computer Science</strong>. I believe technology should be
+                    human-centered, accessible, and crafted with genuine care.
+                </p>
+
+                <div class="stats">
+                    <div class="stat"><div class="n" data-count="3">0</div><div class="l">Shipped projects</div></div>
+                    <div class="stat"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Uptime hosted</div></div>
+                    <div class="stat"><div class="n" data-count="24" data-suffix="/7">0</div><div class="l">Always live</div></div>
+                </div>
+
+                <div class="sec-head">
+                    <span class="num">02</span>
+                    <h2>Connect</h2>
+                    <span class="tag">Always Open</span>
+                </div>
+                <div class="sec-line"></div>
+                <div class="grid-4">
+                    <a href="https://t.me/Stillhis" class="link-btn tg" target="_blank" data-hover><i class="fab fa-telegram-plane"></i><span>Telegram</span></a>
+                    <a href="https://discord.com/users/mark1760" class="link-btn dc" target="_blank" data-hover><i class="fab fa-discord"></i><span>Discord</span></a>
+                    <a href="https://github.com/Ogyrchik807" class="link-btn gh" target="_blank" data-hover><i class="fab fa-github"></i><span>GitHub</span></a>
+                    <a href="mailto:yogaserega042@gmail.com" class="link-btn em" id="emailCopy" data-hover><i class="fa-solid fa-envelope"></i><span>Email</span></a>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section id="page-projects" class="page">
+                <div class="hero">
+                    <div id="blackhole-avatar" class="avatar-3d">
+                        <span class="bh-label">SGR A*</span>
+                        <span class="bh-ring-hint">drag to orbit · click to flare</span>
+                    </div>
+                    <span class="kicker">Selected Work</span>
+                    <h1><span class="grad">Things I've Built</span></h1>
+                    <p class="role">Solutions engineered to genuinely matter — live, hosted, and shipped.</p>
+                </div>
+
+                <div class="sec-head">
+                    <span class="num">01</span>
+                    <h2>Nizhny Novgorod Cultural Compass</h2>
+                    <span class="tag">Telegram Bot</span>
+                </div>
+                <div class="sec-line"></div>
+
+                <div class="proj">
+                    <div class="proj-top">
+                        <div style="display:flex;align-items:center;">
+                            <div class="proj-icon c">🧭</div>
+                            <div class="proj-title">Cultural Compass</div>
+                        </div>
+                        <span class="proj-badge">Bilingual · Geolocation</span>
+                    </div>
+                    <p class="proj-desc">
+                        A smart <strong>bilingual Telegram bot</strong> that helps tourists and locals explore the historical landmarks of Nizhny Novgorod.
+                        Users share their geolocation and instantly discover the nearest point of interest — with description, distance, photo, and a Google Maps link.
+                    </p>
+                    <div class="tech">
+                        <span>JavaScript</span><span>Telegram API</span><span>Haversine Formula</span><span>And others</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://t.me/nnov_compass_bot" class="chip bot" target="_blank" data-hover>🤖 Try the Bot</a>
+                        <a href="https://nnov-compass-bot.yogaserega042.workers.dev/dashboard" class="chip dash" target="_blank" data-hover>📊 Dashboard</a>
+                        <a href="https://github.com/Ogyrchik807/nnov-compass-bot" class="chip gh" target="_blank" data-hover><i class="fab fa-github"></i> Source</a>
+                    </div>
+                </div>
+
+                <div class="sec-head">
+                    <span class="num">02</span>
+                    <h2>USA Facts</h2>
+                    <span class="tag">Bot + Channel</span>
+                </div>
+                <div class="sec-line"></div>
+
+                <div class="proj">
+                    <div class="proj-top">
+                        <div style="display:flex;align-items:center;">
+                            <div class="proj-icon u">🇺🇸</div>
+                            <div class="proj-title">USA Facts</div>
+                        </div>
+                        <span class="proj-badge">Auto-posting · Queue</span>
+                    </div>
+                    <p class="proj-desc">
+                        A Telegram bot that <strong>automatically publishes interesting facts about the United States</strong> twice a day.
+                        It manages a fact queue, supports scheduled publishing, and includes a live analytics dashboard — connected to a Telegram channel for daily delivery.
+                    </p>
+                    <div class="tech">
+                        <span>JavaScript</span><span>Telegram API</span><span>Queue System</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://t.me/usa_facts_daily_bot" class="chip bot" target="_blank" data-hover>🤖 Try the Bot</a>
+                        <a href="https://t.me/usadreamlife" class="chip ch" target="_blank" data-hover>📢 Channel</a>
+                        <a href="https://github.com/Ogyrchik807/usa_facts_daily_bot" class="chip gh" target="_blank" data-hover><i class="fab fa-github"></i> Source</a>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <span class="ni">📡</span>
+                    <span class="nt"><b>Real-time analytics.</b> Both bots collect live statistics and 24/7 global availability.</span>
+                </div>
+            </section>
+
+            <!-- AWARDS -->
+            <section id="page-achievements" class="page">
+                <div class="hero">
+                    <span class="hero-emoji">🏆</span>
+                    <span class="kicker">Recognition</span>
+                    <h1><span class="grad">Awards &amp; Diplomas</span></h1>
+                    <p class="role">A snapshot of recognitions earned along the journey.</p>
+                </div>
+
+                <div class="sec-head">
+                    <span class="num">01</span>
+                    <h2>Awards &amp; Certificates</h2>
+                    <span class="tag">2024 – 2026</span>
+                </div>
+                <div class="sec-line"></div>
+
+                <div class="award">
+                    <div class="medal">🏅</div>
+                    <div>
+                        <h3>Winner — All-Russian "Universum" Research Competition</h3>
+                        <p>Research project in AI / mental-health tools.</p>
+                        <span class="date">June 2026 · Samara, Russia</span>
+                    </div>
+                </div>
+
+                <div class="award">
+                    <div class="medal">📘</div>
+                    <div>
+                        <h3>Additional Achievements</h3>
+                        <p>More certificates and awards available in the Google Drive folder below.</p>
+                        <span class="date">Updated regularly</span>
+                    </div>
+                </div>
+
+                <a href="https://drive.google.com/drive/folders/17UwudHHDaHXhL_744Nt0LcrHhwOMiEnZ?usp=drive_link" class="drive-cta" target="_blank" data-hover>
+                    <i class="fab fa-google-drive"></i> View All Achievements on Google Drive
+                </a>
+                <p class="tiny-note">Files are publicly accessible via the link</p>
+            </section>
+
+            <footer class="footer">
+                <span class="left">© 2026 Komarov Sergey · <a href="https://github.com/Ogyrchik807" target="_blank">GitHub</a></span>
+                <span class="badge">🇺🇸 US College Applicant</span>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- ===== СТАТУС-БАР ===== -->
+    <div class="status">
+        <div class="left">
+            <span class="mode">● online</span>
+            <span id="clock">00:00</span>
+            <span id="nnClock" class="nn-clock" data-hover>NNov 00:00<span class="nn-tip">Sergey's local time (Nizhny Novgorod)</span></span>
+            <span id="pageLabel">home</span>
+        </div>
+        <div class="keys">
+            <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> navigate <kbd>/</kbd> search <kbd>?</kbd> help <kbd>esc</kbd> close
+        </div>
+    </div>
+
+    <!-- ===== КОМАНДНАЯ СТРОКА ===== -->
+    <dialog id="palette">
+        <div class="palette-box">
+            <input type="text" id="pInput" placeholder="Type a command or search..." autocomplete="off">
+            <ul id="pList"></ul>
+        </div>
+    </dialog>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast-wrap" id="toastWrap"></div>
+
+    <!-- ===== КНОПКА НАВЕРХ ===== -->
+    <button id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- ===== FLOATING TERMINAL (В ЛЕВОМ НИЖНЕМ УГЛУ) ===== -->
+    <button class="terminal-toggle-btn" id="terminalToggle" aria-label="Open interactive terminal">
+        <i class="fa-solid fa-terminal"></i>
+        <span>Terminal</span>
+        <span class="badge">⌨️</span>
+    </button>
+
+    <div class="terminal-float" id="terminalFloat">
+        <div class="terminal-header" id="terminalDrag">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">terminal — bash</span>
+            <button class="terminal-close" id="terminalClose"><i class="fa-solid fa-times"></i></button>
+        </div>
+        <div class="terminal-body" id="terminalBody"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // ============================================================
+        // 1. SOUND SYSTEM
+        // ============================================================
+        (function() {
+            let audioCtx = null;
+
+            function getAudioContext() {
+                if (!audioCtx) {
+                    audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                }
+                return audioCtx;
+            }
+
+            function createBeep(frequency = 800, duration = 0.08, type = 'sine', volume = 0.3) {
+                return function() {
+                    try {
+                        const ctx = getAudioContext();
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = type;
+                        osc.frequency.value = frequency;
+                        gain.gain.setValueAtTime(volume, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(ctx.currentTime);
+                        osc.stop(ctx.currentTime + duration);
+                        return true;
+                    } catch (e) {
+                        return false;
+                    }
+                };
+            }
+
+            const sounds = {
+                click: createBeep(900, 0.06, 'sine', 0.25),
+                hover: createBeep(600, 0.04, 'sine', 0.10),
+                switch: createBeep(1100, 0.07, 'sine', 0.20),
+                flare: createBeep(180, 0.35, 'sawtooth', 0.22),
+                whoosh: createBeep(1400, 0.25, 'sine', 0.12),
+                nova: createBeep(90, 0.9, 'sawtooth', 0.3)
+            };
+
+            window.playSound = function(type) {
+                try {
+                    if (sounds[type]) sounds[type]();
+                } catch (e) {}
+            };
+
+            function addSoundsToElements() {
+                document.querySelectorAll('.btn, .chip, .link-btn, .drive-cta, .nav a, .btn-sm, .btn-cta, .project-links a, .quick-btn')
+                    .forEach(el => {
+                        el.addEventListener('click', () => window.playSound('click'));
+                    });
+                document.querySelectorAll('.proj, .award, .stat, .link-btn, .project-card, .achievement-card').forEach(el => {
+                    el.addEventListener('mouseenter', () => window.playSound('hover'));
+                });
+                document.querySelectorAll('.nav a').forEach(el => {
+                    el.addEventListener('click', () => window.playSound('switch'));
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', addSoundsToElements);
+            } else {
+                addSoundsToElements();
+            }
+        })();
+
+        // ============================================================
+        // 2. PAGE SWITCHING
+        // ============================================================
+        const nav = document.getElementById('nav');
+        const navInd = document.getElementById('navInd');
+
+        function moveIndicator(el) {
+            if (!el) return;
+            const r = el.getBoundingClientRect();
+            const nr = nav.getBoundingClientRect();
+            navInd.style.left = (r.left - nr.left) + 'px';
+            navInd.style.width = r.width + 'px';
+        }
+
+        let spaceActive = false;
+
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            const activeA = document.querySelector(`.nav a[data-page="${page}"]`);
+            activeA.classList.add('active');
+            requestAnimationFrame(() => moveIndicator(activeA));
+
+            document.getElementById('pageLabel').textContent = page;
+
+            if (page === 'projects') {
+                document.getElementById('space-container').classList.add('active');
+                if (!spaceActive) {
+                    spaceActive = true;
+                    setTimeout(() => {
+                        initSpaceScene();
+                        initBlackHole();
+                    }, 200);
+                } else {
+                    initBlackHole();
+                }
+            } else {
+                document.getElementById('space-container').classList.remove('active');
+            }
+
+            animateStats();
+        }
+
+        function animateStats() {
+            document.querySelectorAll('[data-count]').forEach(el => {
+                const target = parseInt(el.dataset.count);
+                const suffix = el.dataset.suffix || '';
+                let cur = 0;
+                const step = Math.max(1, target / 30);
+                const tick = () => {
+                    cur += step;
+                    if (cur >= target) {
+                        el.textContent = target + suffix;
+                    } else {
+                        el.textContent = Math.floor(cur) + suffix;
+                        requestAnimationFrame(tick);
+                    }
+                };
+                tick();
+            });
+        }
+
+        // ============================================================
+        // 3. КОМАНДНАЯ СТРОКА
+        // ============================================================
+        const palette = document.getElementById('palette');
+        const pInput = document.getElementById('pInput');
+        const pList = document.getElementById('pList');
+        let pIndex = 0;
+
+        const COMMANDS = [
+            { label: 'Go to Home', icon: 'fa-house', key: '1', action: () => showPage('home') },
+            { label: 'Go to Projects', icon: 'fa-rocket', key: '2', action: () => showPage('projects') },
+            { label: 'Go to Achievements', icon: 'fa-trophy', key: '3', action: () => showPage('achievements') },
+            { label: 'Open GitHub', icon: 'fab fa-github', key: '', action: () => window.open('https://github.com/Ogyrchik807', '_blank') },
+            { label: 'Open Telegram', icon: 'fab fa-telegram', key: '', action: () => window.open('https://t.me/Stillhis', '_blank') },
+            { label: 'Copy Email', icon: 'fa-envelope', key: '', action: copyEmail },
+            { label: 'Download Résumé (PDF)', icon: 'fa-file-arrow-down', key: '', action: () => generateResumePDF() },
+            { label: 'Copy Contact Card', icon: 'fa-id-card', key: '', action: copyContactCard },
+            { label: 'Toggle Cursor Trail', icon: 'fa-meteor', key: '', action: toggleCometTrail },
+            { label: 'View Drive', icon: 'fab fa-google-drive', key: '', action: () => window.open('https://drive.google.com/drive/folders/17UwudHHDaHXhL_744Nt0LcrHhwOMiEnZ?usp=drive_link', '_blank') },
+        ];
+
+        function openPalette() {
+            palette.showModal();
+            pInput.value = '';
+            renderPalette('');
+            setTimeout(() => pInput.focus(), 50);
+        }
+
+        function closePalette() { palette.close(); }
+
+        function renderPalette(q) {
+            const filtered = COMMANDS.filter(c => c.label.toLowerCase().includes(q.toLowerCase()));
+            pList.innerHTML = '';
+            filtered.forEach((c, i) => {
+                const li = document.createElement('li');
+                li.innerHTML =
+                    `<span><i class="fas ${c.icon}"></i> ${c.label}</span> ${c.key ? `<span class="key">${c.key}</span>` : ''}`;
+                if (i === 0) li.classList.add('focused');
+                li.addEventListener('click', () => { c.action();
+                    closePalette(); });
+                pList.appendChild(li);
+            });
+            pIndex = 0;
+        }
+
+        pInput.addEventListener('input', e => renderPalette(e.target.value));
+        pInput.addEventListener('keydown', e => {
+            const items = pList.querySelectorAll('li');
+            if (e.key === 'ArrowDown') { pIndex = (pIndex + 1) % items.length;
+                updateFocus(items);
+                e.preventDefault(); }
+            if (e.key === 'ArrowUp') { pIndex = (pIndex - 1 + items.length) % items.length;
+                updateFocus(items);
+                e.preventDefault(); }
+            if (e.key === 'Enter') { items[pIndex]?.click(); }
+        });
+
+        function updateFocus(items) {
+            items.forEach((it, i) => it.classList.toggle('focused', i === pIndex));
+            items[pIndex]?.scrollIntoView({ block: 'nearest' });
+        }
+
+        palette.addEventListener('click', e => { if (e.target === palette) closePalette(); });
+
+        // ============================================================
+        // 4. КОПИРОВАНИЕ EMAIL / CONTACT CARD (NEW FEATURE)
+        // ============================================================
+        function copyEmail() {
+            navigator.clipboard.writeText('yogaserega042@gmail.com').then(() => {
+                toast('Email copied to clipboard');
+            });
+        }
+        document.getElementById('emailCopy').addEventListener('click', e => { e.preventDefault();
+            copyEmail(); });
+
+        // NEW: one-click "contact card" — copies every channel as ready-to-paste text
+        function copyContactCard() {
+            const card = [
+                'Komarov Sergey — Software Engineer',
+                'Nizhny Novgorod, Russia · US College Applicant (CS)',
+                '',
+                'Telegram : https://t.me/Stillhis',
+                'Discord  : mark1760',
+                'GitHub   : https://github.com/Ogyrchik807',
+                'Email    : yogaserega042@gmail.com'
+            ].join('\n');
+            navigator.clipboard.writeText(card).then(() => {
+                toast('Contact card copied — ready to paste');
+            }).catch(() => {
+                toast('Could not copy — try again');
+            });
+        }
+        document.getElementById('copyCardBtn').addEventListener('click', copyContactCard);
+
+        // ============================================================
+        // NEW: ONE-PAGE RÉSUMÉ PDF — generated client-side from the
+        // same real content already on this page (nothing invented).
+        // Useful as an actual attachment for college applications,
+        // recruiters, or anyone who wants something offline/printable.
+        // ============================================================
+        function generateResumePDF() {
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+                const marginX = 54;
+                let y = 56;
+                const pageW = doc.internal.pageSize.getWidth();
+                const contentW = pageW - marginX * 2;
+
+                const accent = [124, 108, 255];
+                const dark = [25, 25, 35];
+                const gray = [110, 112, 140];
+
+                // Header
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(22);
+                doc.setTextColor(...dark);
+                doc.text('Komarov Sergey', marginX, y);
+                y += 20;
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11.5);
+                doc.setTextColor(...accent);
+                doc.text('Software Engineer · Aspiring CS Student', marginX, y);
+                y += 16;
+                doc.setFontSize(9.5);
+                doc.setTextColor(...gray);
+                doc.text('Nizhny Novgorod, Russia   ·   yogaserega042@gmail.com   ·   github.com/Ogyrchik807   ·   t.me/Stillhis', marginX, y);
+                y += 10;
+                doc.setDrawColor(...accent);
+                doc.setLineWidth(1);
+                doc.line(marginX, y, pageW - marginX, y);
+                y += 24;
+
+                function sectionTitle(t) {
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(12.5);
+                    doc.setTextColor(...dark);
+                    doc.text(t.toUpperCase(), marginX, y);
+                    y += 6;
+                    doc.setDrawColor(230, 230, 235);
+                    doc.line(marginX, y, pageW - marginX, y);
+                    y += 16;
+                }
+
+                function bodyText(t, size = 10, color = dark, gap = 14) {
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(size);
+                    doc.setTextColor(...color);
+                    const lines = doc.splitTextToSize(t, contentW);
+                    doc.text(lines, marginX, y);
+                    y += lines.length * gap;
+                }
+
+                // About
+                sectionTitle('About');
+                bodyText('High school student with a deep passion for software engineering, AI, and product design. ' +
+                    'Builds tools that solve real human problems — from mental-health bots to interactive experiences. ' +
+                    'Currently applying to US universities for Computer Science.');
+                y += 10;
+
+                // Projects
+                sectionTitle('Projects');
+                const projects = [
+                    {
+                        name: 'Nizhny Novgorod Cultural Compass — Telegram Bot',
+                        desc: 'Bilingual Telegram bot that geolocates users and surfaces the nearest historical landmark with description, distance, photo, and map link.',
+                        tech: 'JavaScript · Telegram API · Haversine Formula · Cloudflare Workers',
+                        link: 't.me/nnov_compass_bot · github.com/Ogyrchik807/nnov-compass-bot'
+                    },
+                    {
+                        name: 'USA Facts — Bot + Channel',
+                        desc: 'Telegram bot that auto-publishes facts about the United States twice daily via a managed queue, feeding a live analytics dashboard.',
+                        tech: 'JavaScript · Telegram API · Queue System',
+                        link: 't.me/usa_facts_daily_bot · github.com/Ogyrchik807/usa_facts_daily_bot'
+                    }
+                ];
+                projects.forEach(p => {
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(10.5);
+                    doc.setTextColor(...dark);
+                    doc.text(p.name, marginX, y);
+                    y += 13;
+                    bodyText(p.desc, 9.5, gray, 12.5);
+                    doc.setFont('helvetica', 'italic');
+                    doc.setFontSize(9);
+                    doc.setTextColor(...accent);
+                    doc.text(p.tech, marginX, y);
+                    y += 12;
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(9);
+                    doc.setTextColor(...gray);
+                    doc.text(p.link, marginX, y);
+                    y += 20;
+                });
+
+                // Awards
+                sectionTitle('Awards & Recognition');
+                bodyText('Winner — All-Russian "Universum" Research Competition (June 2026, Samara, Russia)\nResearch project in AI / mental-health tools.', 9.5, dark, 13);
+                y += 6;
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(9);
+                doc.setTextColor(...gray);
+                doc.text('Additional certificates available on request / via Google Drive link on the live site.', marginX, y);
+
+                doc.save('Komarov_Sergey_Resume.pdf');
+                toast('Résumé PDF downloaded');
+            } catch (err) {
+                toast('Could not generate PDF — try again');
+            }
+        }
+        document.getElementById('resumeBtn').addEventListener('click', generateResumePDF);
+
+        // ============================================================
+        // 5. TOAST
+        // ============================================================
+        function toast(msg) {
+            const wrap = document.getElementById('toastWrap');
+            const t = document.createElement('div');
+            t.className = 'toast';
+            t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+            wrap.appendChild(t);
+            requestAnimationFrame(() => t.classList.add('show'));
+            setTimeout(() => {
+                t.classList.remove('show');
+                setTimeout(() => t.remove(), 400);
+            }, 2800);
+        }
+
+        // ============================================================
+        // 6. КЛОК (+ NEW: second clock showing Nizhny Novgorod local time,
+        // handy for anyone scheduling a call/interview across time zones)
+        // ============================================================
+        const nnClockEl = document.getElementById('nnClock');
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit',
+                hour12: false });
+            const nnTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Moscow' });
+            // preserve the tooltip span while updating the visible text
+            nnClockEl.childNodes[0].nodeValue = 'NNov ' + nnTime + ' ';
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ============================================================
+        // 7. КЛАВИАТУРА (+ NEW: Konami code easter egg)
+        // ============================================================
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closePalette(); return; }
+            const typing = ['INPUT', 'TEXTAREA'].includes(e.target.tagName);
+            if (e.key === '/' && !palette.open && !typing) { e.preventDefault();
+                openPalette(); return; }
+            if (e.key === '?' && !palette.open && !typing) { e.preventDefault();
+                showShortcutsHelp(); return; }
+            if (e.key >= '1' && e.key <= '3' && !palette.open && !typing) {
+                const pages = ['home', 'projects', 'achievements'];
+                showPage(pages[parseInt(e.key) - 1]);
+            }
+            if (!typing) checkKonami(e.key);
+        });
+
+        // NEW FEATURE: "?" opens a quick shortcuts cheat-sheet as a toast
+        function showShortcutsHelp() {
+            toast('1·2·3 pages · / search · ? this help · drag black hole to orbit it');
+        }
+
+        // NEW FEATURE: Konami code (↑ ↑ ↓ ↓ ← → ← → B A) triggers a supernova flare
+        const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+        let konamiProgress = 0;
+        function checkKonami(key) {
+            const expected = KONAMI[konamiProgress];
+            const match = key.length === 1 ? key.toLowerCase() === expected : key === expected;
+            if (match) {
+                konamiProgress++;
+                if (konamiProgress === KONAMI.length) {
+                    konamiProgress = 0;
+                    triggerSupernova();
+                }
+            } else {
+                konamiProgress = (key === KONAMI[0]) ? 1 : 0;
+            }
+        }
+        function triggerSupernova() {
+            const flash = document.getElementById('supernova-flash');
+            flash.classList.remove('fire');
+            void flash.offsetWidth; // restart animation
+            flash.classList.add('fire');
+            window.playSound && window.playSound('nova');
+            if (document.getElementById('page-projects').classList.contains('active') && typeof triggerFlare === 'function') {
+                triggerFlare();
+            }
+            toast('✨ Supernova triggered — Sgr A* just flared');
+        }
+
+        // ============================================================
+        // 8. КНОПКА НАВЕРХ
+        // ============================================================
+        const toTop = document.getElementById('toTop');
+        window.addEventListener('scroll', () => {
+            toTop.classList.toggle('on', window.scrollY > 500);
+        });
+        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ============================================================
+        // 9. FLOATING TERMINAL
+        // ============================================================
+        const terminalFloat = document.getElementById('terminalFloat');
+        const terminalToggleBtn = document.getElementById('terminalToggle');
+        const terminalClose = document.getElementById('terminalClose');
+        const terminalBodyF = document.getElementById('terminalBody');
+
+        let terminalOpen = false;
+        let terminalHistory = [];
+        let historyIndex = 0;
+
+        const terminalCommands = {
+            help: function() {
+                return `
+        <span class="highlight">📋 Available commands:</span>
+
+          <span class="cmd">whoami</span>       — Who you are
+          <span class="cmd">about</span>        — About me
+          <span class="cmd">projects</span>     — List all projects
+          <span class="cmd">skills</span>       — Tech stack & skills
+          <span class="cmd">contact</span>      — Contact information
+          <span class="cmd">bot</span>          — Link to Cultural Compass bot
+          <span class="cmd">dashboard</span>    — Link to analytics dashboard
+          <span class="cmd">blackhole</span>    — Sgr A* readout
+          <span class="cmd">copyall</span>      — Copy full contact card
+          <span class="cmd">resume</span>       — Download résumé as PDF
+          <span class="cmd">trail</span>        — Toggle the comet cursor trail
+          <span class="cmd">clear</span>        — Clear terminal
+          <span class="cmd">sudo</span>         — 😄 Try it!
+          <span class="cmd">date</span>         — Show current date & time
+          <span class="cmd">echo</span>         — Echo anything (e.g. echo Hello World!)
+          <span class="cmd">help</span>         — Show this help
+        `;
+            },
+            whoami: function() {
+                return `
+        <span class="highlight">Komarov Sergey</span>
+        <span class="dim">High School Student · Aspiring Software Engineer</span>
+        <span class="dim">📍 Nizhny Novgorod, Russia</span>
+        <span class="dim">🎯 US College Applicant for Computer Science</span>
+        <span class="dim">🧠 Building human-centered tools</span>
+        `;
+            },
+            about: function() {
+                return `
+        <span class="highlight">About Me</span>
+
+        I'm a high school student from Russia with a deep passion for
+        <strong>software engineering, AI, and product design</strong>.
+
+        I build tools that solve real human problems — from mental-health bots
+        to interactive experiences.
+
+        Currently applying to <strong>US universities for Computer Science</strong>.
+        I believe technology should be human-centered, accessible, and
+        crafted with genuine care.
+        `;
+            },
+            projects: function() {
+                return `
+        <span class="highlight">🚀 My Projects</span>
+
+        <span class="project-item"><span class="name">🧭 Nizhny Novgorod Cultural Compass</span>
+          <span class="desc">Bilingual Telegram bot · Geolocation · Cloudflare Workers</span></span>
+
+        <span class="project-item"><span class="name">🇺🇸 USA Facts</span>
+          <span class="desc">Telegram bot + Channel · Auto-posting · Queue System</span></span>
+
+        <span class="project-item"><span class="name">🎨 Portfolio Website</span>
+          <span class="desc">Interactive portfolio · 3D graphics · Terminal</span></span>
+
+        <span class="dim">Type 'bot' or 'dashboard' for specific links.</span>
+        `;
+            },
+            skills: function() {
+                return `
+        <span class="highlight">🛠️ Tech Stack</span>
+
+          <span class="accent">JavaScript</span>    ████████████████░░ 85%
+          <span class="accent">Python</span>        ██████████░░░░░░░░ 65%
+          <span class="accent">Cloudflare</span>     ████████████░░░░░░ 75%
+          <span class="accent">HTML/CSS</span>       ████████████████░░ 80%
+          <span class="accent">Git</span>           ██████████████░░░░ 70%
+          <span class="accent">Figma</span>         ██████░░░░░░░░░░░░ 40%
+          <span class="accent">AI/LLMs</span>        ██████████░░░░░░░░ 60%
+        `;
+            },
+            contact: function() {
+                return `
+        <span class="highlight">📬 Contact</span>
+
+          📱 Telegram: <a href="https://t.me/Stillhis" target="_blank" style="color:var(--accent-2);">@Stillhis</a>
+          💬 Discord: <span class="dim">mark1760</span>
+          🐙 GitHub: <a href="https://github.com/Ogyrchik807" target="_blank" style="color:var(--accent-2);">Ogyrchik807</a>
+          ✉️ Email: <a href="mailto:yogaserega042@gmail.com" style="color:var(--accent-2);">yogaserega042@gmail.com</a>
+
+        <span class="dim">Type 'copyall' to copy everything at once.</span>
+        `;
+            },
+            bot: function() {
+                return `
+        <span class="highlight">🤖 Nizhny Novgorod Cultural Compass</span>
+
+        <a href="https://t.me/nnov_compass_bot" target="_blank" style="color:var(--accent-2);">https://t.me/nnov_compass_bot</a>
+
+        <span class="dim">A bilingual Telegram bot that helps explore historical landmarks.</span>
+        `;
+            },
+            dashboard: function() {
+                return `
+        <span class="highlight">📊 Analytics Dashboard</span>
+
+        <a href="https://nnov-compass-bot.yogaserega042.workers.dev/dashboard" target="_blank" style="color:var(--accent-2);">https://nnov-compass-bot.yogaserega042.workers.dev/dashboard</a>
+
+        <span class="dim">Live statistics: users, commands, popular landmarks.</span>
+        `;
+            },
+            blackhole: function() {
+                return `
+        <span class="highlight">🕳️ Sgr A* — live readout</span>
+
+          Mass ................ <span class="accent">4.15M ☉</span>
+          Schwarzschild radius . <span class="accent">~12M km (sim)</span>
+          Disk temp ............ <span class="accent">hot → cool gradient</span>
+          Status ............... <span class="accent">accreting, stable</span>
+
+        <span class="dim">Visit the Projects tab, then drag the avatar to orbit
+        it or click it to trigger a flare. Or try the Konami code
+        (↑↑↓↓←→←→BA) anywhere on the page.</span>
+        `;
+            },
+            copyall: function() {
+                copyContactCard();
+                return `<span class="accent">✔ Contact card copied to clipboard.</span>`;
+            },
+            resume: function() {
+                generateResumePDF();
+                return `<span class="accent">✔ Résumé PDF is downloading.</span>`;
+            },
+            trail: function() {
+                const on = toggleCometTrail();
+                return `<span class="accent">Cursor trail ${on ? 'enabled' : 'disabled'}.</span>`;
+            },
+            clear: function() {
+                return 'CLEAR';
+            },
+            sudo: function() {
+                return `
+        <span class="error">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
+        <span class="error">  ⚠️  Nice try! But you don't have sudo privileges.  </span>
+        <span class="error">  😄  (This is a portfolio, not a real server!)       </span>
+        <span class="error">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
+        `;
+            },
+            date: function() {
+                const now = new Date();
+                return `<span class="dim">${now.toString()}</span>`;
+            },
+            echo: function(args) {
+                return args || '<span class="dim">(empty)</span>';
+            }
+        };
+
+        function handleCommand(cmd) {
+            const trimmed = cmd.trim();
+            if (!trimmed) return '';
+
+            const parts = trimmed.split(' ');
+            const command = parts[0].toLowerCase();
+            const args = parts.slice(1).join(' ');
+
+            terminalHistory.push(trimmed);
+            historyIndex = terminalHistory.length;
+
+            if (command === 'clear') return 'CLEAR';
+            if (command === 'echo') return terminalCommands.echo(args);
+
+            const handler = terminalCommands[command];
+            if (handler) return handler();
+
+            return `<span class="error">Command not found: ${command}</span>
+        <span class="dim">Type 'help' to see available commands.</span>`;
+        }
+
+        function addTerminalLine(text, isOutput = true) {
+            const inputLine = terminalBodyF.querySelector('.input-line');
+            if (inputLine) inputLine.remove();
+
+            if (isOutput) {
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'output';
+                outputDiv.innerHTML = text;
+                terminalBodyF.appendChild(outputDiv);
+            }
+
+            const newInputLine = document.createElement('div');
+            newInputLine.className = 'input-line';
+            newInputLine.innerHTML = `
+                <span class="prompt">$</span>
+                <input type="text" id="terminalInputF" autofocus spellcheck="false" autocomplete="off" placeholder="type a command...">
+            `;
+            terminalBodyF.appendChild(newInputLine);
+            terminalBodyF.scrollTop = terminalBodyF.scrollHeight;
+
+            const newInput = document.getElementById('terminalInputF');
+            if (newInput) {
+                newInput.addEventListener('keydown', handleTerminalKeydownF);
+                newInput.focus();
+            }
+        }
+
+        function showWelcome() {
+            const welcome = `
+        <span class="accent">╭──────────────────────────────────────╮</span>
+        <span class="accent">│</span>  <span class="highlight">Welcome to the interactive terminal!</span>  <span class="accent">│</span>
+        <span class="accent">│</span>  Type <span class="cmd">help</span> to see available commands     <span class="accent">│</span>
+        <span class="accent">╰──────────────────────────────────────╯</span>
+        `;
+            terminalBodyF.innerHTML = `<div class="output">${welcome}</div>`;
+            addTerminalLine('', false);
+        }
+
+        function handleTerminalKeydownF(e) {
+            if (e.key === 'Enter') {
+                const input = e.target;
+                const cmd = input.value;
+
+                const inputLine = document.querySelector('.input-line');
+                if (inputLine) {
+                    const prompt = inputLine.querySelector('.prompt');
+                    if (prompt) {
+                        const cmdSpan = document.createElement('span');
+                        cmdSpan.style.color = 'var(--text-1)';
+                        cmdSpan.textContent = ' ' + cmd;
+                        prompt.after(cmdSpan);
+                    }
+                    inputLine.remove();
+                }
+
+                const result = handleCommand(cmd);
+                if (result === 'CLEAR') {
+                    terminalBodyF.innerHTML = '';
+                    addTerminalLine('', false);
+                    return;
+                }
+
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'output';
+                outputDiv.innerHTML = result;
+                terminalBodyF.appendChild(outputDiv);
+                addTerminalLine('', false);
+            }
+
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const input = e.target;
+                if (terminalHistory.length > 0) {
+                    historyIndex = Math.max(0, historyIndex - 1);
+                    input.value = terminalHistory[historyIndex] || '';
+                }
+            }
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const input = e.target;
+                if (historyIndex < terminalHistory.length - 1) {
+                    historyIndex = Math.min(terminalHistory.length - 1, historyIndex + 1);
+                    input.value = terminalHistory[historyIndex] || '';
+                } else {
+                    historyIndex = terminalHistory.length;
+                    input.value = '';
+                }
+            }
+        }
+
+        // Открыть/закрыть терминал
+        function toggleTerminal() {
+            terminalOpen = !terminalOpen;
+            terminalFloat.classList.toggle('open', terminalOpen);
+            if (terminalOpen) {
+                setTimeout(() => {
+                    const input = document.getElementById('terminalInputF');
+                    if (input) input.focus();
+                }, 100);
+            }
+        }
+
+        terminalToggleBtn.addEventListener('click', toggleTerminal);
+        terminalClose.addEventListener('click', toggleTerminal);
+
+        // ============================================================
+        // 10. SPACE SCENE
+        // ============================================================
+        let spaceScene, spaceCamera, spaceRenderer, spaceStars, spaceAnim;
+
+        function initSpaceScene() {
+            const container = document.getElementById('space-container');
+            if (spaceRenderer) return;
+            const w = container.clientWidth || window.innerWidth;
+            const h = container.clientHeight || window.innerHeight;
+            spaceScene = new THREE.Scene();
+            spaceCamera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
+            spaceCamera.position.set(0, 0, 10);
+            spaceRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            spaceRenderer.setSize(w, h);
+            spaceRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            spaceRenderer.setClearColor(0x000000, 0);
+            container.appendChild(spaceRenderer.domElement);
+
+            const count = 1400;
+            const pos = new Float32Array(count * 3);
+            for (let i = 0; i < count; i++) {
+                const r = 6 + Math.random() * 10;
+                const t = Math.random() * Math.PI * 2;
+                const p = Math.acos(Math.random() * 2 - 1);
+                pos[i * 3] = r * Math.sin(p) * Math.cos(t);
+                pos[i * 3 + 1] = r * Math.sin(p) * Math.sin(t);
+                pos[i * 3 + 2] = r * Math.cos(p);
+            }
+            const g = new THREE.BufferGeometry();
+            g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            const m = new THREE.PointsMaterial({
+                color: 0x88aaff,
+                size: 0.05,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            spaceStars = new THREE.Points(g, m);
+            spaceScene.add(spaceStars);
+
+            (function loop() {
+                spaceAnim = requestAnimationFrame(loop);
+                if (spaceStars) {
+                    spaceStars.rotation.y += 0.00018;
+                    spaceStars.rotation.x += 0.00006;
+                }
+                spaceRenderer.render(spaceScene, spaceCamera);
+            })();
+        }
+
+        // ============================================================
+        // 11. BLACK HOLE AVATAR — REDESIGNED
+        // Features: layered glow "photon sphere", Keplerian accretion-disk
+        // particle field (color-graded by temperature), an infall stream
+        // of matter spiraling into the horizon, drag-to-orbit camera
+        // control, hover-speedup, and a click-triggered flare burst.
+        // ============================================================
+        let bhR, bhS, bhC, bhG, bhA;
+        let bhDiskPoints, bhDiskGeo, bhDiskCount, bhDiskBase;
+        let bhInfallPoints, bhInfallGeo, bhInfallCount, bhInfallData;
+        let bhGlowSprite, bhFlareSprite;
+        let bhDragging = false, bhLastX = 0, bhLastY = 0;
+        let bhTheta = 0.55, bhPhi = 1.15; // camera orbit angles
+        let bhSpeed = 1;
+        let bhFlareStrength = 0;
+
+        function makeRadialTexture(colorStops) {
+            const size = 128;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            const grd = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+            colorStops.forEach(([stop, color]) => grd.addColorStop(stop, color));
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, size, size);
+            const tex = new THREE.CanvasTexture(canvas);
+            tex.needsUpdate = true;
+            return tex;
+        }
+
+        function initBlackHole() {
+            const container = document.getElementById('blackhole-avatar');
+            // wipe previous canvas but keep the label/hint overlay elements
+            container.querySelectorAll('canvas').forEach(c => c.remove());
+            if (bhA) { cancelAnimationFrame(bhA); bhA = null; }
+
+            const w = container.clientWidth || 168;
+            const h = container.clientHeight || 168;
+
+            bhS = new THREE.Scene();
+            bhC = new THREE.PerspectiveCamera(42, w / h, 0.05, 100);
+            bhR = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            bhR.setSize(w, h);
+            bhR.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            bhR.setClearColor(0x000000, 0);
+            container.insertBefore(bhR.domElement, container.firstChild);
+
+            bhG = new THREE.Group();
+            bhS.add(bhG);
+
+            // --- event horizon (pure black sphere) ---
+            const horizon = new THREE.Mesh(
+                new THREE.SphereGeometry(0.42, 48, 48),
+                new THREE.MeshBasicMaterial({ color: 0x000000 })
+            );
+            bhG.add(horizon);
+
+            // --- photon-ring glow (soft additive sprite behind the horizon) ---
+            const glowTex = makeRadialTexture([
+                [0, 'rgba(255,240,210,0.95)'],
+                [0.18, 'rgba(255,200,140,0.55)'],
+                [0.4, 'rgba(160,140,255,0.22)'],
+                [1, 'rgba(0,0,0,0)']
+            ]);
+            const glowMat = new THREE.SpriteMaterial({ map: glowTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+            bhGlowSprite = new THREE.Sprite(glowMat);
+            bhGlowSprite.scale.set(1.9, 1.9, 1);
+            bhG.add(bhGlowSprite);
+
+            // --- thin bent "lensed" ring (light bent around the horizon) ---
+            const lensRing = new THREE.Mesh(
+                new THREE.RingGeometry(0.46, 0.5, 96),
+                new THREE.MeshBasicMaterial({ color: 0xfff4d6, side: THREE.DoubleSide, transparent: true, opacity: 0.9 })
+            );
+            lensRing.rotation.x = Math.PI / 2;
+            bhG.add(lensRing);
+            const lensRing2 = new THREE.Mesh(
+                new THREE.RingGeometry(0.44, 0.47, 96),
+                new THREE.MeshBasicMaterial({ color: 0x9fd8ff, side: THREE.DoubleSide, transparent: true, opacity: 0.55 })
+            );
+            lensRing2.rotation.x = Math.PI / 2 + 0.28;
+            bhG.add(lensRing2);
+
+            // --- Keplerian accretion disk (particle field) ---
+            bhDiskCount = 2600;
+            const diskPos = new Float32Array(bhDiskCount * 3);
+            const diskCol = new Float32Array(bhDiskCount * 3);
+            bhDiskBase = [];
+            const hot = new THREE.Color(0xfff6e8);
+            const mid = new THREE.Color(0xffb066);
+            const cool = new THREE.Color(0x6f7bff);
+            for (let i = 0; i < bhDiskCount; i++) {
+                const rad = 0.55 + Math.pow(Math.random(), 1.6) * 1.9;
+                const ang = Math.random() * Math.PI * 2;
+                const thick = (Math.random() - 0.5) * 0.06 * (rad);
+                bhDiskBase.push({ rad, ang, thick, speed: 0.9 / Math.pow(rad, 1.5) });
+                const x = Math.cos(ang) * rad;
+                const z = Math.sin(ang) * rad;
+                diskPos[i * 3] = x;
+                diskPos[i * 3 + 1] = thick;
+                diskPos[i * 3 + 2] = z;
+                const t = Math.min(1, (rad - 0.55) / 1.9);
+                const c = t < 0.4 ? hot.clone().lerp(mid, t / 0.4) : mid.clone().lerp(cool, (t - 0.4) / 0.6);
+                diskCol[i * 3] = c.r;
+                diskCol[i * 3 + 1] = c.g;
+                diskCol[i * 3 + 2] = c.b;
+            }
+            bhDiskGeo = new THREE.BufferGeometry();
+            bhDiskGeo.setAttribute('position', new THREE.BufferAttribute(diskPos, 3));
+            bhDiskGeo.setAttribute('color', new THREE.BufferAttribute(diskCol, 3));
+            const diskMat = new THREE.PointsMaterial({
+                size: 0.028,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.9,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            bhDiskPoints = new THREE.Points(bhDiskGeo, diskMat);
+            bhDiskPoints.rotation.x = Math.PI / 2.35;
+            bhG.add(bhDiskPoints);
+
+            // --- infall stream: matter spiraling inward and disappearing ---
+            bhInfallCount = 260;
+            const inPos = new Float32Array(bhInfallCount * 3);
+            bhInfallData = [];
+            for (let i = 0; i < bhInfallCount; i++) {
+                const rad = 0.6 + Math.random() * 1.6;
+                const ang = Math.random() * Math.PI * 2;
+                bhInfallData.push({ rad, ang, fall: 0.15 + Math.random() * 0.35, tilt: (Math.random() - 0.5) * 0.5 });
+                inPos[i * 3] = Math.cos(ang) * rad;
+                inPos[i * 3 + 1] = 0;
+                inPos[i * 3 + 2] = Math.sin(ang) * rad;
+            }
+            bhInfallGeo = new THREE.BufferGeometry();
+            bhInfallGeo.setAttribute('position', new THREE.BufferAttribute(inPos, 3));
+            const infallMat = new THREE.PointsMaterial({
+                color: 0xffe8c2,
+                size: 0.018,
+                transparent: true,
+                opacity: 0.75,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            bhInfallPoints = new THREE.Points(bhInfallGeo, infallMat);
+            bhInfallPoints.rotation.x = Math.PI / 2.35;
+            bhG.add(bhInfallPoints);
+
+            // --- flare sprite for click interaction (hidden until triggered) ---
+            const flareTex = makeRadialTexture([
+                [0, 'rgba(255,255,255,1)'],
+                [0.25, 'rgba(255,180,120,0.8)'],
+                [0.6, 'rgba(140,120,255,0.25)'],
+                [1, 'rgba(0,0,0,0)']
+            ]);
+            bhFlareSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: flareTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0 }));
+            bhFlareSprite.scale.set(0.1, 0.1, 1);
+            bhG.add(bhFlareSprite);
+
+            positionCamera();
+
+            (function loop() {
+                bhA = requestAnimationFrame(loop);
+                const t = Date.now() * 0.001;
+
+                // rotate disk & infall particles
+                const positions = bhDiskGeo.attributes.position.array;
+                for (let i = 0; i < bhDiskCount; i++) {
+                    const d = bhDiskBase[i];
+                    const a = d.ang + t * d.speed * bhSpeed;
+                    positions[i * 3] = Math.cos(a) * d.rad;
+                    positions[i * 3 + 2] = Math.sin(a) * d.rad;
+                }
+                bhDiskGeo.attributes.position.needsUpdate = true;
+
+                const ipos = bhInfallGeo.attributes.position.array;
+                for (let i = 0; i < bhInfallCount; i++) {
+                    const d = bhInfallData[i];
+                    d.rad -= 0.0035 * bhSpeed;
+                    if (d.rad < 0.45) { d.rad = 0.6 + Math.random() * 1.6; d.ang = Math.random() * Math.PI * 2; }
+                    d.ang += 0.01 * bhSpeed / d.rad;
+                    ipos[i * 3] = Math.cos(d.ang) * d.rad;
+                    ipos[i * 3 + 1] = Math.sin(t * 2 + i) * 0.02 * d.tilt;
+                    ipos[i * 3 + 2] = Math.sin(d.ang) * d.rad;
+                }
+                bhInfallGeo.attributes.position.needsUpdate = true;
+
+                // pulsing photon-ring glow
+                const pulse = 0.85 + 0.15 * Math.sin(t * 1.6);
+                bhGlowSprite.scale.set(1.9 * pulse, 1.9 * pulse, 1);
+                lensRing.rotation.z += 0.004 * bhSpeed;
+                lensRing2.rotation.z -= 0.003 * bhSpeed;
+
+                // gentle idle auto-orbit when not dragging
+                if (!bhDragging) { bhTheta += 0.0018 * bhSpeed; }
+                positionCamera();
+
+                // flare decay
+                if (bhFlareStrength > 0.001) {
+                    bhFlareStrength *= 0.92;
+                    bhFlareSprite.material.opacity = bhFlareStrength;
+                    bhFlareSprite.scale.set(0.6 + bhFlareStrength * 2.4, 0.6 + bhFlareStrength * 2.4, 1);
+                    bhSpeed = 1 + bhFlareStrength * 6;
+                } else {
+                    bhFlareSprite.material.opacity = 0;
+                    bhSpeed += (1 - bhSpeed) * 0.05;
+                }
+
+                bhR.render(bhS, bhC);
+            })();
+        }
+
+        function positionCamera() {
+            if (!bhC) return;
+            const dist = 4.3;
+            bhC.position.set(
+                dist * Math.sin(bhPhi) * Math.sin(bhTheta),
+                dist * Math.cos(bhPhi),
+                dist * Math.sin(bhPhi) * Math.cos(bhTheta)
+            );
+            bhC.lookAt(0, 0, 0);
+        }
+
+        function triggerFlare() {
+            bhFlareStrength = 1;
+            window.playSound && window.playSound('flare');
+            const el = document.getElementById('blackhole-avatar');
+            el.classList.add('pulled');
+            setTimeout(() => el.classList.remove('pulled'), 1200);
+        }
+
+        (function setupBlackHoleInteraction() {
+            const el = document.getElementById('blackhole-avatar');
+            if (!el) return;
+
+            el.addEventListener('pointerdown', e => {
+                bhDragging = true;
+                bhLastX = e.clientX;
+                bhLastY = e.clientY;
+                el.classList.add('dragging');
+                el.setPointerCapture(e.pointerId);
+            });
+            el.addEventListener('pointermove', e => {
+                if (!bhDragging) return;
+                const dx = e.clientX - bhLastX;
+                const dy = e.clientY - bhLastY;
+                bhLastX = e.clientX;
+                bhLastY = e.clientY;
+                bhTheta -= dx * 0.008;
+                bhPhi = Math.min(2.6, Math.max(0.5, bhPhi - dy * 0.008));
+            });
+            const endDrag = e => {
+                if (!bhDragging) return;
+                bhDragging = false;
+                el.classList.remove('dragging');
+            };
+            el.addEventListener('pointerup', endDrag);
+            el.addEventListener('pointerleave', endDrag);
+
+            el.addEventListener('mouseenter', () => { bhSpeed = 1.6; window.playSound && window.playSound('whoosh'); });
+            el.addEventListener('mouseleave', () => { bhSpeed = 1; });
+
+            el.addEventListener('click', () => { if (!bhDragging) triggerFlare(); });
+        })();
+
+        // ============================================================
+        // 12. CUSTOM CURSOR + NEW COMET-TRAIL PARTICLE SYSTEM
+        // The base dot/ring cursor is kept exactly as before. On top of
+        // it, a lightweight canvas draws a trail of fading, drifting
+        // particles behind the pointer — like a small comet — colored
+        // from the site's own accent palette. Toggleable via the quick
+        // dock button, command palette, or terminal ("trail").
+        // ============================================================
+        const cDot = document.getElementById('cDot');
+        const cRing = document.getElementById('cRing');
+        let mx = 0,
+            my = 0,
+            rx = 0,
+            ry = 0;
+        window.addEventListener('mousemove', e => {
+            mx = e.clientX;
+            my = e.clientY;
+            cDot.style.left = mx + 'px';
+            cDot.style.top = my + 'px';
+        });
+        (function ring() {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            cRing.style.left = rx + 'px';
+            cRing.style.top = ry + 'px';
+            requestAnimationFrame(ring);
+        })();
+        document.querySelectorAll('a, .stat, .proj, .award, [data-hover]').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        const cometCanvas = document.getElementById('cometCanvas');
+        const cometCtx = cometCanvas.getContext('2d');
+        let cometEnabled = !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+                            !window.matchMedia('(hover: none)').matches;
+        let cometParticles = [];
+        const COMET_COLORS = ['124,108,255', '45,212,191', '240,171,252', '251,191,36'];
+
+        function resizeCometCanvas() {
+            cometCanvas.width = window.innerWidth;
+            cometCanvas.height = window.innerHeight;
+        }
+        resizeCometCanvas();
+        window.addEventListener('resize', resizeCometCanvas);
+
+        let lastCometX = null, lastCometY = null;
+        window.addEventListener('mousemove', e => {
+            if (!cometEnabled) return;
+            if (lastCometX !== null) {
+                const dist = Math.hypot(e.clientX - lastCometX, e.clientY - lastCometY);
+                const steps = Math.min(3, Math.max(1, Math.floor(dist / 12)));
+                for (let i = 0; i < steps; i++) {
+                    cometParticles.push({
+                        x: e.clientX + (Math.random() - 0.5) * 4,
+                        y: e.clientY + (Math.random() - 0.5) * 4,
+                        vx: (Math.random() - 0.5) * 0.6,
+                        vy: (Math.random() - 0.5) * 0.6 - 0.15,
+                        life: 1,
+                        size: 1.5 + Math.random() * 2.2,
+                        color: COMET_COLORS[Math.floor(Math.random() * COMET_COLORS.length)]
+                    });
+                }
+                if (cometParticles.length > 140) cometParticles.splice(0, cometParticles.length - 140);
+            }
+            lastCometX = e.clientX;
+            lastCometY = e.clientY;
+        });
+
+        // NEW FEATURE: click "photon burst" — a small radial pop of light
+        // wherever you click, independent of the comet-trail toggle so
+        // clicks always feel responsive. Skips on reduced-motion.
+        let burstParticles = [];
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        document.addEventListener('click', e => {
+            if (reduceMotion || window.matchMedia('(hover: none)').matches) return;
+            const n = 10;
+            for (let i = 0; i < n; i++) {
+                const ang = (Math.PI * 2 * i) / n + Math.random() * 0.3;
+                const speed = 1.4 + Math.random() * 1.8;
+                burstParticles.push({
+                    x: e.clientX, y: e.clientY,
+                    vx: Math.cos(ang) * speed, vy: Math.sin(ang) * speed,
+                    life: 1, size: 1.5 + Math.random() * 1.8,
+                    color: COMET_COLORS[Math.floor(Math.random() * COMET_COLORS.length)]
+                });
+            }
+            if (burstParticles.length > 200) burstParticles.splice(0, burstParticles.length - 200);
+        });
+
+        (function cometLoop() {
+            requestAnimationFrame(cometLoop);
+            cometCtx.clearRect(0, 0, cometCanvas.width, cometCanvas.height);
+            if (cometEnabled) {
+                for (let i = cometParticles.length - 1; i >= 0; i--) {
+                    const p = cometParticles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.life -= 0.028;
+                    if (p.life <= 0) { cometParticles.splice(i, 1); continue; }
+                    cometCtx.beginPath();
+                    cometCtx.fillStyle = `rgba(${p.color},${p.life * 0.75})`;
+                    cometCtx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+                    cometCtx.fill();
+                }
+            }
+            for (let i = burstParticles.length - 1; i >= 0; i--) {
+                const p = burstParticles[i];
+                p.x += p.vx; p.y += p.vy;
+                p.vx *= 0.94; p.vy *= 0.94;
+                p.life -= 0.035;
+                if (p.life <= 0) { burstParticles.splice(i, 1); continue; }
+                cometCtx.beginPath();
+                cometCtx.fillStyle = `rgba(${p.color},${p.life * 0.85})`;
+                cometCtx.arc(p.x, p.y, p.size * p.life * 1.4, 0, Math.PI * 2);
+                cometCtx.fill();
+            }
+        })();
+
+        function toggleCometTrail() {
+            cometEnabled = !cometEnabled;
+            if (!cometEnabled) { cometParticles = []; cometCtx.clearRect(0, 0, cometCanvas.width, cometCanvas.height); }
+            document.getElementById('cometToggleBtn').classList.toggle('active', cometEnabled);
+            toast(`Cursor trail ${cometEnabled ? 'on' : 'off'}`);
+            return cometEnabled;
+        }
+        document.getElementById('cometToggleBtn').addEventListener('click', toggleCometTrail);
+        if (cometEnabled) document.getElementById('cometToggleBtn').classList.add('active');
+
+        // ============================================================
+        // 13. SCROLL PROGRESS
+        // ============================================================
+        window.addEventListener('scroll', () => {
+            const sc = document.documentElement.scrollTop;
+            const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('progress').style.width = (sc / h * 100) + '%';
+        });
+
+        // ============================================================
+        // 14. MAGNETIC + SPOTLIGHT ON LINK BUTTONS
+        // ============================================================
+        document.querySelectorAll('.link-btn').forEach(b => {
+            b.addEventListener('mousemove', e => {
+                const r = b.getBoundingClientRect();
+                b.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                b.style.setProperty('--my', (e.clientY - r.top) + 'px');
+            });
+        });
+
+        // ============================================================
+        // 15. ORB PARALLAX
+        // ============================================================
+        document.addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth - 0.5);
+            const y = (e.clientY / window.innerHeight - 0.5);
+            document.querySelector('.orb-1').style.transform = `translate(${x*40}px,${y*40}px)`;
+            document.querySelector('.orb-2').style.transform = `translate(${x*-30}px,${y*-30}px)`;
+        });
+
+        // ============================================================
+        // 16. INIT
+        // ============================================================
+        window.addEventListener('load', () => {
+            const active = document.querySelector('.nav a.active');
+            requestAnimationFrame(() => moveIndicator(active));
+            animateStats();
+            document.getElementById('pageLabel').textContent = 'home';
+            showWelcome();
+        });
+        window.addEventListener('resize', () => {
+            moveIndicator(document.querySelector('.nav a.active'));
+        });
+    </script>
+</body>
+</html>
