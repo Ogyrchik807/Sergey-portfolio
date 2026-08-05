@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Komarov Sergey — Software Engineer</title>
     <meta name="description" content="Komarov Sergey — high school student, aspiring software engineer, and US college applicant. Building human-centered tools." />
+
+    <!-- Open Graph / Twitter — clean link preview when this page is shared with admissions officers, recruiters, etc. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Komarov Sergey — Software Engineer">
     <meta property="og:description" content="High school student building human-centered software: bilingual bots, live dashboards, and tools that solve real problems. Applying to US universities for Computer Science.">
@@ -22,10 +24,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* ============================================================
-           ВЕСЬ ТВОЙ СТАРЫЙ CSS (БЕЗ ИЗМЕНЕНИЙ)
-           Я не трогаю ни один стиль, чтобы ничего не сломать
-           ============================================================ */
         :root {
             --bg-0: #07070c;
             --bg-1: #0c0c16;
@@ -52,7 +50,12 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        /* NEW: real keyboard-accessibility, not just decorative — visible
+           focus ring for anyone tabbing through with a keyboard/screen
+           reader, plus a skip-link past the animated hero. */
         a:focus-visible, button:focus-visible, [tabindex]:focus-visible, input:focus-visible {
             outline: 2px solid var(--accent-2);
             outline-offset: 3px;
@@ -111,6 +114,7 @@
         body.hovering .cursor-dot { width: 0; height: 0; }
         @media (hover: none), (max-width: 768px) { .cursor-dot, .cursor-ring { display: none; } }
 
+        /* comet trail canvas — sits above content, below the dot/ring */
         #cometCanvas { position: fixed; inset: 0; z-index: 9998; pointer-events: none; }
         @media (hover: none), (max-width: 768px) { #cometCanvas { display: none; } }
 
@@ -169,25 +173,7 @@
         .hero h1 { font-family: var(--font-display); font-size: clamp(40px, 6vw, 60px); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; color: var(--text-1); }
         .hero h1 .grad { background: linear-gradient(110deg, var(--text-1) 20%, var(--accent) 55%, var(--accent-3) 95%);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero .role {
-            font-size: 18px;
-            color: var(--text-2);
-            margin-top: 12px;
-            font-weight: 450;
-            max-width: 540px;
-            min-height: 28px;
-        }
-        .hero .role::after {
-            content: '▋';
-            color: var(--accent-2);
-            animation: blink 1s step-end infinite;
-            margin-left: 2px;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
+        .hero .role { font-size: 18px; color: var(--text-2); margin-top: 12px; font-weight: 450; max-width: 540px; }
         .hero .loc { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 13px; color: var(--text-3);
             padding: 6px 16px; border: 1px solid var(--border); border-radius: 100px; background: var(--surface-2); }
         .hero .loc i { color: var(--accent); }
@@ -292,6 +278,7 @@
         #space-container.active { opacity: 0.6; }
         #space-container canvas { width: 100% !important; height: 100% !important; display: block; }
 
+        /* ===== BLACK HOLE AVATAR (REDESIGNED) ===== */
         #blackhole-avatar {
             position: relative;
             width: 168px;
@@ -338,6 +325,7 @@
             white-space: nowrap;
         }
         #blackhole-avatar:hover .bh-label { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+        #blackhole-avatar canvas:active { }
 
         .status {
             position: fixed;
@@ -527,6 +515,7 @@
             transform: translateY(-2px);
         }
 
+        /* ===== FLOATING TERMINAL (В ЛЕВОМ НИЖНЕМ УГЛУ) ===== */
         .terminal-float {
             position: fixed;
             bottom: 80px;
@@ -671,6 +660,7 @@
             font-size: 11px;
         }
 
+        /* ===== КНОПКА ОТКРЫТИЯ ТЕРМИНАЛА ===== */
         .terminal-toggle-btn {
             position: fixed;
             bottom: 28px;
@@ -756,6 +746,7 @@
             .sec-head h2 { font-size: 18px; }
         }
 
+        /* ===== NEW: QUICK-ACTIONS DOCK (top-right, next to nav) ===== */
         .quick-dock {
             display: flex;
             align-items: center;
@@ -803,6 +794,7 @@
         .quick-btn:hover .qb-tip { opacity: 1; transform: none; }
         .quick-btn.active { color: var(--accent-2); border-color: rgba(45,212,191,0.35); background: rgba(45,212,191,0.08); }
 
+        /* ===== NEW: supernova flash overlay (konami easter egg) ===== */
         #supernova-flash {
             position: fixed;
             inset: 0;
@@ -874,8 +866,7 @@
                     <span class="hero-emoji">🧑‍💻</span>
                     <span class="kicker">Software Engineer · Builder</span>
                     <h1><span class="grad">Komarov Sergey</span></h1>
-                    <!-- ПЕЧАТАЮЩИЙСЯ ТЕКСТ -->
-                    <p class="role" id="typing-text"></p>
+                    <p class="role">High school student crafting human-centered tools in software, AI &amp; product design.</p>
                     <span class="loc"><i class="fa-solid fa-location-dot"></i> Nizhny Novgorod, Russia · Building things that help people</span>
                 </div>
 
@@ -1086,48 +1077,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         // ============================================================
-        // 0. ПЕЧАТАЮЩИЙСЯ ТЕКСТ
-        // ============================================================
-        const typingTexts = [
-            'High school student crafting human-centered tools.',
-            'Aspiring software engineer & US college applicant.',
-            'Building with AI, bots, and product design.'
-        ];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingElement = document.getElementById('typing-text');
-
-        function typeEffect() {
-            if (!typingElement) return;
-            const currentText = typingTexts[textIndex];
-
-            if (isDeleting) {
-                typingElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % typingTexts.length;
-                    setTimeout(typeEffect, 800);
-                    return;
-                }
-                setTimeout(typeEffect, 30);
-                return;
-            }
-
-            if (charIndex < currentText.length) {
-                typingElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                setTimeout(typeEffect, 55);
-            } else {
-                setTimeout(() => {
-                    isDeleting = true;
-                    setTimeout(typeEffect, 300);
-                }, 2000);
-            }
-        }
-
-        // ============================================================
         // 1. SOUND SYSTEM
         // ============================================================
         (function() {
@@ -1325,7 +1274,7 @@
         palette.addEventListener('click', e => { if (e.target === palette) closePalette(); });
 
         // ============================================================
-        // 4. КОПИРОВАНИЕ EMAIL / CONTACT CARD
+        // 4. КОПИРОВАНИЕ EMAIL / CONTACT CARD (NEW FEATURE)
         // ============================================================
         function copyEmail() {
             navigator.clipboard.writeText('yogaserega042@gmail.com').then(() => {
@@ -1335,6 +1284,7 @@
         document.getElementById('emailCopy').addEventListener('click', e => { e.preventDefault();
             copyEmail(); });
 
+        // NEW: one-click "contact card" — copies every channel as ready-to-paste text
         function copyContactCard() {
             const card = [
                 'Komarov Sergey — Software Engineer',
@@ -1354,7 +1304,10 @@
         document.getElementById('copyCardBtn').addEventListener('click', copyContactCard);
 
         // ============================================================
-        // 5. RÉSUMÉ PDF
+        // NEW: ONE-PAGE RÉSUMÉ PDF — generated client-side from the
+        // same real content already on this page (nothing invented).
+        // Useful as an actual attachment for college applications,
+        // recruiters, or anyone who wants something offline/printable.
         // ============================================================
         function generateResumePDF() {
             try {
@@ -1369,6 +1322,7 @@
                 const dark = [25, 25, 35];
                 const gray = [110, 112, 140];
 
+                // Header
                 doc.setFont('helvetica', 'bold');
                 doc.setFontSize(22);
                 doc.setTextColor(...dark);
@@ -1381,8 +1335,7 @@
                 y += 16;
                 doc.setFontSize(9.5);
                 doc.setTextColor(...gray);
-                doc.text('Nizhny Novgorod, Russia   ·   yogaserega042@gmail.com   ·   github.com/Ogyrchik807   ·   t.me/Stillhis', marginX,
-                    y);
+                doc.text('Nizhny Novgorod, Russia   ·   yogaserega042@gmail.com   ·   github.com/Ogyrchik807   ·   t.me/Stillhis', marginX, y);
                 y += 10;
                 doc.setDrawColor(...accent);
                 doc.setLineWidth(1);
@@ -1409,14 +1362,17 @@
                     y += lines.length * gap;
                 }
 
+                // About
                 sectionTitle('About');
                 bodyText('High school student with a deep passion for software engineering, AI, and product design. ' +
                     'Builds tools that solve real human problems — from mental-health bots to interactive experiences. ' +
                     'Currently applying to US universities for Computer Science.');
                 y += 10;
 
+                // Projects
                 sectionTitle('Projects');
-                const projects = [{
+                const projects = [
+                    {
                         name: 'Nizhny Novgorod Cultural Compass — Telegram Bot',
                         desc: 'Bilingual Telegram bot that geolocates users and surfaces the nearest historical landmark with description, distance, photo, and map link.',
                         tech: 'JavaScript · Telegram API · Haversine Formula · Cloudflare Workers',
@@ -1448,9 +1404,9 @@
                     y += 20;
                 });
 
+                // Awards
                 sectionTitle('Awards & Recognition');
-                bodyText('Winner — All-Russian "Universum" Research Competition (June 2026, Samara, Russia)\nResearch project in AI / mental-health tools.',
-                    9.5, dark, 13);
+                bodyText('Winner — All-Russian "Universum" Research Competition (June 2026, Samara, Russia)\nResearch project in AI / mental-health tools.', 9.5, dark, 13);
                 y += 6;
                 doc.setFont('helvetica', 'normal');
                 doc.setFontSize(9);
@@ -1466,7 +1422,7 @@
         document.getElementById('resumeBtn').addEventListener('click', generateResumePDF);
 
         // ============================================================
-        // 6. TOAST
+        // 5. TOAST
         // ============================================================
         function toast(msg) {
             const wrap = document.getElementById('toastWrap');
@@ -1482,23 +1438,23 @@
         }
 
         // ============================================================
-        // 7. КЛОК
+        // 6. КЛОК (+ NEW: second clock showing Nizhny Novgorod local time,
+        // handy for anyone scheduling a call/interview across time zones)
         // ============================================================
         const nnClockEl = document.getElementById('nnClock');
-
         function updateClock() {
             const now = new Date();
             document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit',
                 hour12: false });
-            const nnTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false,
-                timeZone: 'Europe/Moscow' });
+            const nnTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Moscow' });
+            // preserve the tooltip span while updating the visible text
             nnClockEl.childNodes[0].nodeValue = 'NNov ' + nnTime + ' ';
         }
         setInterval(updateClock, 1000);
         updateClock();
 
         // ============================================================
-        // 8. КЛАВИАТУРА
+        // 7. КЛАВИАТУРА (+ NEW: Konami code easter egg)
         // ============================================================
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') { closePalette(); return; }
@@ -1514,15 +1470,14 @@
             if (!typing) checkKonami(e.key);
         });
 
+        // NEW FEATURE: "?" opens a quick shortcuts cheat-sheet as a toast
         function showShortcutsHelp() {
             toast('1·2·3 pages · / search · ? this help · drag black hole to orbit it');
         }
 
-        const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b',
-            'a'
-        ];
+        // NEW FEATURE: Konami code (↑ ↑ ↓ ↓ ← → ← → B A) triggers a supernova flare
+        const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
         let konamiProgress = 0;
-
         function checkKonami(key) {
             const expected = KONAMI[konamiProgress];
             const match = key.length === 1 ? key.toLowerCase() === expected : key === expected;
@@ -1536,11 +1491,10 @@
                 konamiProgress = (key === KONAMI[0]) ? 1 : 0;
             }
         }
-
         function triggerSupernova() {
             const flash = document.getElementById('supernova-flash');
             flash.classList.remove('fire');
-            void flash.offsetWidth;
+            void flash.offsetWidth; // restart animation
             flash.classList.add('fire');
             window.playSound && window.playSound('nova');
             if (document.getElementById('page-projects').classList.contains('active') && typeof triggerFlare === 'function') {
@@ -1550,7 +1504,7 @@
         }
 
         // ============================================================
-        // 9. КНОПКА НАВЕРХ
+        // 8. КНОПКА НАВЕРХ
         // ============================================================
         const toTop = document.getElementById('toTop');
         window.addEventListener('scroll', () => {
@@ -1559,7 +1513,7 @@
         toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         // ============================================================
-        // 10. FLOATING TERMINAL
+        // 9. FLOATING TERMINAL
         // ============================================================
         const terminalFloat = document.getElementById('terminalFloat');
         const terminalToggleBtn = document.getElementById('terminalToggle');
@@ -1833,6 +1787,7 @@
             }
         }
 
+        // Открыть/закрыть терминал
         function toggleTerminal() {
             terminalOpen = !terminalOpen;
             terminalFloat.classList.toggle('open', terminalOpen);
@@ -1848,7 +1803,7 @@
         terminalClose.addEventListener('click', toggleTerminal);
 
         // ============================================================
-        // 11. SPACE SCENE
+        // 10. SPACE SCENE
         // ============================================================
         let spaceScene, spaceCamera, spaceRenderer, spaceStars, spaceAnim;
 
@@ -1900,17 +1855,18 @@
         }
 
         // ============================================================
-        // 12. BLACK HOLE
+        // 11. BLACK HOLE AVATAR — REDESIGNED
+        // Features: layered glow "photon sphere", Keplerian accretion-disk
+        // particle field (color-graded by temperature), an infall stream
+        // of matter spiraling into the horizon, drag-to-orbit camera
+        // control, hover-speedup, and a click-triggered flare burst.
         // ============================================================
         let bhR, bhS, bhC, bhG, bhA;
         let bhDiskPoints, bhDiskGeo, bhDiskCount, bhDiskBase;
         let bhInfallPoints, bhInfallGeo, bhInfallCount, bhInfallData;
         let bhGlowSprite, bhFlareSprite;
-        let bhDragging = false,
-            bhLastX = 0,
-            bhLastY = 0;
-        let bhTheta = 0.55,
-            bhPhi = 1.15;
+        let bhDragging = false, bhLastX = 0, bhLastY = 0;
+        let bhTheta = 0.55, bhPhi = 1.15; // camera orbit angles
         let bhSpeed = 1;
         let bhFlareStrength = 0;
 
@@ -1931,9 +1887,9 @@
 
         function initBlackHole() {
             const container = document.getElementById('blackhole-avatar');
+            // wipe previous canvas but keep the label/hint overlay elements
             container.querySelectorAll('canvas').forEach(c => c.remove());
-            if (bhA) { cancelAnimationFrame(bhA);
-                bhA = null; }
+            if (bhA) { cancelAnimationFrame(bhA); bhA = null; }
 
             const w = container.clientWidth || 168;
             const h = container.clientHeight || 168;
@@ -1949,24 +1905,26 @@
             bhG = new THREE.Group();
             bhS.add(bhG);
 
+            // --- event horizon (pure black sphere) ---
             const horizon = new THREE.Mesh(
                 new THREE.SphereGeometry(0.42, 48, 48),
                 new THREE.MeshBasicMaterial({ color: 0x000000 })
             );
             bhG.add(horizon);
 
+            // --- photon-ring glow (soft additive sprite behind the horizon) ---
             const glowTex = makeRadialTexture([
                 [0, 'rgba(255,240,210,0.95)'],
                 [0.18, 'rgba(255,200,140,0.55)'],
                 [0.4, 'rgba(160,140,255,0.22)'],
                 [1, 'rgba(0,0,0,0)']
             ]);
-            const glowMat = new THREE.SpriteMaterial({ map: glowTex, transparent: true, blending: THREE.AdditiveBlending,
-                depthWrite: false });
+            const glowMat = new THREE.SpriteMaterial({ map: glowTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
             bhGlowSprite = new THREE.Sprite(glowMat);
             bhGlowSprite.scale.set(1.9, 1.9, 1);
             bhG.add(bhGlowSprite);
 
+            // --- thin bent "lensed" ring (light bent around the horizon) ---
             const lensRing = new THREE.Mesh(
                 new THREE.RingGeometry(0.46, 0.5, 96),
                 new THREE.MeshBasicMaterial({ color: 0xfff4d6, side: THREE.DoubleSide, transparent: true, opacity: 0.9 })
@@ -1980,6 +1938,7 @@
             lensRing2.rotation.x = Math.PI / 2 + 0.28;
             bhG.add(lensRing2);
 
+            // --- Keplerian accretion disk (particle field) ---
             bhDiskCount = 2600;
             const diskPos = new Float32Array(bhDiskCount * 3);
             const diskCol = new Float32Array(bhDiskCount * 3);
@@ -2018,6 +1977,7 @@
             bhDiskPoints.rotation.x = Math.PI / 2.35;
             bhG.add(bhDiskPoints);
 
+            // --- infall stream: matter spiraling inward and disappearing ---
             bhInfallCount = 260;
             const inPos = new Float32Array(bhInfallCount * 3);
             bhInfallData = [];
@@ -2043,14 +2003,14 @@
             bhInfallPoints.rotation.x = Math.PI / 2.35;
             bhG.add(bhInfallPoints);
 
+            // --- flare sprite for click interaction (hidden until triggered) ---
             const flareTex = makeRadialTexture([
                 [0, 'rgba(255,255,255,1)'],
                 [0.25, 'rgba(255,180,120,0.8)'],
                 [0.6, 'rgba(140,120,255,0.25)'],
                 [1, 'rgba(0,0,0,0)']
             ]);
-            bhFlareSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: flareTex, transparent: true, blending: THREE
-                        .AdditiveBlending, depthWrite: false, opacity: 0 }));
+            bhFlareSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: flareTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0 }));
             bhFlareSprite.scale.set(0.1, 0.1, 1);
             bhG.add(bhFlareSprite);
 
@@ -2060,6 +2020,7 @@
                 bhA = requestAnimationFrame(loop);
                 const t = Date.now() * 0.001;
 
+                // rotate disk & infall particles
                 const positions = bhDiskGeo.attributes.position.array;
                 for (let i = 0; i < bhDiskCount; i++) {
                     const d = bhDiskBase[i];
@@ -2073,8 +2034,7 @@
                 for (let i = 0; i < bhInfallCount; i++) {
                     const d = bhInfallData[i];
                     d.rad -= 0.0035 * bhSpeed;
-                    if (d.rad < 0.45) { d.rad = 0.6 + Math.random() * 1.6;
-                        d.ang = Math.random() * Math.PI * 2; }
+                    if (d.rad < 0.45) { d.rad = 0.6 + Math.random() * 1.6; d.ang = Math.random() * Math.PI * 2; }
                     d.ang += 0.01 * bhSpeed / d.rad;
                     ipos[i * 3] = Math.cos(d.ang) * d.rad;
                     ipos[i * 3 + 1] = Math.sin(t * 2 + i) * 0.02 * d.tilt;
@@ -2082,14 +2042,17 @@
                 }
                 bhInfallGeo.attributes.position.needsUpdate = true;
 
+                // pulsing photon-ring glow
                 const pulse = 0.85 + 0.15 * Math.sin(t * 1.6);
                 bhGlowSprite.scale.set(1.9 * pulse, 1.9 * pulse, 1);
                 lensRing.rotation.z += 0.004 * bhSpeed;
                 lensRing2.rotation.z -= 0.003 * bhSpeed;
 
+                // gentle idle auto-orbit when not dragging
                 if (!bhDragging) { bhTheta += 0.0018 * bhSpeed; }
                 positionCamera();
 
+                // flare decay
                 if (bhFlareStrength > 0.001) {
                     bhFlareStrength *= 0.92;
                     bhFlareSprite.material.opacity = bhFlareStrength;
@@ -2151,20 +2114,48 @@
             el.addEventListener('pointerup', endDrag);
             el.addEventListener('pointerleave', endDrag);
 
-            el.addEventListener('mouseenter', () => { bhSpeed = 1.6;
-                window.playSound && window.playSound('whoosh'); });
+            el.addEventListener('mouseenter', () => { bhSpeed = 1.6; window.playSound && window.playSound('whoosh'); });
             el.addEventListener('mouseleave', () => { bhSpeed = 1; });
 
             el.addEventListener('click', () => { if (!bhDragging) triggerFlare(); });
         })();
 
         // ============================================================
-        // 13. COMET TRAIL
+        // 12. CUSTOM CURSOR + NEW COMET-TRAIL PARTICLE SYSTEM
+        // The base dot/ring cursor is kept exactly as before. On top of
+        // it, a lightweight canvas draws a trail of fading, drifting
+        // particles behind the pointer — like a small comet — colored
+        // from the site's own accent palette. Toggleable via the quick
+        // dock button, command palette, or terminal ("trail").
         // ============================================================
+        const cDot = document.getElementById('cDot');
+        const cRing = document.getElementById('cRing');
+        let mx = 0,
+            my = 0,
+            rx = 0,
+            ry = 0;
+        window.addEventListener('mousemove', e => {
+            mx = e.clientX;
+            my = e.clientY;
+            cDot.style.left = mx + 'px';
+            cDot.style.top = my + 'px';
+        });
+        (function ring() {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            cRing.style.left = rx + 'px';
+            cRing.style.top = ry + 'px';
+            requestAnimationFrame(ring);
+        })();
+        document.querySelectorAll('a, .stat, .proj, .award, [data-hover]').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
         const cometCanvas = document.getElementById('cometCanvas');
         const cometCtx = cometCanvas.getContext('2d');
         let cometEnabled = !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-            !window.matchMedia('(hover: none)').matches;
+                            !window.matchMedia('(hover: none)').matches;
         let cometParticles = [];
         const COMET_COLORS = ['124,108,255', '45,212,191', '240,171,252', '251,191,36'];
 
@@ -2175,8 +2166,7 @@
         resizeCometCanvas();
         window.addEventListener('resize', resizeCometCanvas);
 
-        let lastCometX = null,
-            lastCometY = null;
+        let lastCometX = null, lastCometY = null;
         window.addEventListener('mousemove', e => {
             if (!cometEnabled) return;
             if (lastCometX !== null) {
@@ -2199,6 +2189,9 @@
             lastCometY = e.clientY;
         });
 
+        // NEW FEATURE: click "photon burst" — a small radial pop of light
+        // wherever you click, independent of the comet-trail toggle so
+        // clicks always feel responsive. Skips on reduced-motion.
         let burstParticles = [];
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         document.addEventListener('click', e => {
@@ -2208,12 +2201,9 @@
                 const ang = (Math.PI * 2 * i) / n + Math.random() * 0.3;
                 const speed = 1.4 + Math.random() * 1.8;
                 burstParticles.push({
-                    x: e.clientX,
-                    y: e.clientY,
-                    vx: Math.cos(ang) * speed,
-                    vy: Math.sin(ang) * speed,
-                    life: 1,
-                    size: 1.5 + Math.random() * 1.8,
+                    x: e.clientX, y: e.clientY,
+                    vx: Math.cos(ang) * speed, vy: Math.sin(ang) * speed,
+                    life: 1, size: 1.5 + Math.random() * 1.8,
                     color: COMET_COLORS[Math.floor(Math.random() * COMET_COLORS.length)]
                 });
             }
@@ -2238,10 +2228,8 @@
             }
             for (let i = burstParticles.length - 1; i >= 0; i--) {
                 const p = burstParticles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                p.vx *= 0.94;
-                p.vy *= 0.94;
+                p.x += p.vx; p.y += p.vy;
+                p.vx *= 0.94; p.vy *= 0.94;
                 p.life -= 0.035;
                 if (p.life <= 0) { burstParticles.splice(i, 1); continue; }
                 cometCtx.beginPath();
@@ -2253,8 +2241,7 @@
 
         function toggleCometTrail() {
             cometEnabled = !cometEnabled;
-            if (!cometEnabled) { cometParticles = [];
-                cometCtx.clearRect(0, 0, cometCanvas.width, cometCanvas.height); }
+            if (!cometEnabled) { cometParticles = []; cometCtx.clearRect(0, 0, cometCanvas.width, cometCanvas.height); }
             document.getElementById('cometToggleBtn').classList.toggle('active', cometEnabled);
             toast(`Cursor trail ${cometEnabled ? 'on' : 'off'}`);
             return cometEnabled;
@@ -2263,7 +2250,7 @@
         if (cometEnabled) document.getElementById('cometToggleBtn').classList.add('active');
 
         // ============================================================
-        // 14. SCROLL PROGRESS
+        // 13. SCROLL PROGRESS
         // ============================================================
         window.addEventListener('scroll', () => {
             const sc = document.documentElement.scrollTop;
@@ -2272,7 +2259,7 @@
         });
 
         // ============================================================
-        // 15. MAGNETIC + SPOTLIGHT
+        // 14. MAGNETIC + SPOTLIGHT ON LINK BUTTONS
         // ============================================================
         document.querySelectorAll('.link-btn').forEach(b => {
             b.addEventListener('mousemove', e => {
@@ -2283,7 +2270,7 @@
         });
 
         // ============================================================
-        // 16. ORB PARALLAX
+        // 15. ORB PARALLAX
         // ============================================================
         document.addEventListener('mousemove', e => {
             const x = (e.clientX / window.innerWidth - 0.5);
@@ -2293,7 +2280,7 @@
         });
 
         // ============================================================
-        // 17. INIT
+        // 16. INIT
         // ============================================================
         window.addEventListener('load', () => {
             const active = document.querySelector('.nav a.active');
@@ -2301,7 +2288,6 @@
             animateStats();
             document.getElementById('pageLabel').textContent = 'home';
             showWelcome();
-            setTimeout(typeEffect, 500);
         });
         window.addEventListener('resize', () => {
             moveIndicator(document.querySelector('.nav a.active'));
