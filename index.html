@@ -183,6 +183,20 @@
         .hero-emoji { font-size: 64px; line-height: 1; margin-bottom: 16px; filter: drop-shadow(0 12px 30px rgba(124,108,255,0.3)); animation: float 5s ease-in-out infinite; }
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
+        /* --- вращающаяся эмодзи на странице Awards (только там) --- */
+        .award-emoji {
+            display: inline-block;
+            animation: spinEmoji 8s linear infinite;
+            font-size: 64px;
+            line-height: 1;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 12px 30px rgba(124,108,255,0.3));
+        }
+        @keyframes spinEmoji {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .sec-head { display: flex; align-items: baseline; gap: 12px; margin: 32px 0 14px; flex-wrap: wrap; }
         .sec-head h2 { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-1); display: flex; align-items: center; gap: 10px; }
         .sec-head .num { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
@@ -274,9 +288,23 @@
         .footer .badge { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.04em;
             padding: 5px 14px; border: 1px solid rgba(124,108,255,0.2); border-radius: 100px; background: rgba(124,108,255,0.06); }
 
-        #space-container { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.4s var(--ease); }
-        #space-container.active { opacity: 0.6; }
-        #space-container canvas { width: 100% !important; height: 100% !important; display: block; }
+        /* ===== SPACE CONTAINER — только на странице Projects ===== */
+        #space-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.4s var(--ease);
+        }
+        #space-container.active {
+            opacity: 0.6;
+        }
+        #space-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
 
         /* ===== BLACK HOLE AVATAR (REDESIGNED) ===== */
         #blackhole-avatar {
@@ -325,7 +353,6 @@
             white-space: nowrap;
         }
         #blackhole-avatar:hover .bh-label { opacity: 1; transform: translateX(-50%) translateY(-4px); }
-        #blackhole-avatar canvas:active { }
 
         .status {
             position: fixed;
@@ -347,8 +374,13 @@
 
         .status .left { display: flex; gap: 20px; align-items: center; }
         .status .mode { color: var(--accent-2); }
-        .status .nn-clock { position: relative; color: var(--text-3); cursor: default; padding-left: 20px; border-left: 1px solid var(--border); }
-        .status .nn-clock::before { content: '🇷🇺'; margin-right: 6px; font-size: 10px; }
+        .status .nn-clock {
+            position: relative;
+            color: var(--text-3);
+            cursor: default;
+            padding-left: 20px;
+            border-left: 1px solid var(--border);
+        }
         .status .nn-clock .nn-tip {
             position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
             font-family: var(--font-mono); font-size: 10px; color: var(--text-2);
@@ -983,7 +1015,7 @@
             <!-- AWARDS -->
             <section id="page-achievements" class="page">
                 <div class="hero">
-                    <span class="hero-emoji">🏆</span>
+                    <span class="award-emoji">🏆</span>
                     <span class="kicker">Recognition</span>
                     <h1><span class="grad">Awards &amp; Diplomas</span></h1>
                     <p class="role">A snapshot of recognitions earned along the journey.</p>
@@ -1033,7 +1065,7 @@
         <div class="left">
             <span class="mode">● online</span>
             <span id="clock">00:00</span>
-            <span id="nnClock" class="nn-clock" data-hover>NNov 00:00<span class="nn-tip">Sergey's local time (Nizhny Novgorod)</span></span>
+            <span id="nnClock" class="nn-clock" data-hover>NNov<span class="nn-tip">Sergey's local time (Nizhny Novgorod)</span></span>
             <span id="pageLabel">home</span>
         </div>
         <div class="keys">
@@ -1172,6 +1204,7 @@
 
             document.getElementById('pageLabel').textContent = page;
 
+            // Включаем звёздный фон ТОЛЬКО на странице Projects
             if (page === 'projects') {
                 document.getElementById('space-container').classList.add('active');
                 if (!spaceActive) {
@@ -1438,17 +1471,15 @@
         }
 
         // ============================================================
-        // 6. КЛОК (+ NEW: second clock showing Nizhny Novgorod local time,
-        // handy for anyone scheduling a call/interview across time zones)
+        // 6. КЛОК (без времени в NNov — только название города)
         // ============================================================
         const nnClockEl = document.getElementById('nnClock');
         function updateClock() {
             const now = new Date();
             document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit',
                 hour12: false });
-            const nnTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Moscow' });
-            // preserve the tooltip span while updating the visible text
-            nnClockEl.childNodes[0].nodeValue = 'NNov ' + nnTime + ' ';
+            // В NNov больше не выводим время — только название города
+            // Оставляем текст "NNov" как есть
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -1803,7 +1834,7 @@
         terminalClose.addEventListener('click', toggleTerminal);
 
         // ============================================================
-        // 10. SPACE SCENE
+        // 10. SPACE SCENE — только на странице Projects
         // ============================================================
         let spaceScene, spaceCamera, spaceRenderer, spaceStars, spaceAnim;
 
